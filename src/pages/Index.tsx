@@ -24,7 +24,7 @@ const Index = () => {
   };
 
   const handleQuoteClick = () => {
-    window.open('https://wa.me/919302494558?text=Hi,%20I%20would%20like%20to%20get%20a%20free%20quote%20for%20my%20construction%20project.', '_blank');
+    window.open('https://wa.me/918435532184?text=Hi,%20I%20would%20like%20to%20get%20a%20free%20quote%20for%20my%20construction%20project.', '_blank');
   };
 
   return (
