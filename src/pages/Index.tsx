@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { TextRotate } from '@/components/ui/text-rotate';
+import { motion } from 'motion/react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SqftEstimator from '@/components/SqftEstimator';
@@ -34,21 +36,53 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center">
             <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 text-gray-900">
+              <motion.h1 
+                className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 text-gray-900"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
                 Homes built with <span className="text-primary">heart</span>,<br /> 
                 starting at <span className="text-accent">₹&nbsp;1,600&nbsp;/ sq&nbsp;ft</span>
-              </h1>
-              <p className="text-lg mb-8 text-gray-700">
-                Crafted Constructions delivers high-quality, transparent construction services across Raipur, Nagpur & Bhandara. From dream homes to renovations, we build to last.
-              </p>
-              <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+              </motion.h1>
+              
+              <motion.div 
+                className="text-lg mb-8 text-gray-700"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              >
+                <span>Crafted Constructions delivers </span>
+                <TextRotate
+                  texts={[
+                    "high-quality",
+                    "transparent",
+                    "reliable",
+                    "affordable",
+                    "innovative",
+                    "sustainable"
+                  ]}
+                  mainClassName="text-primary font-semibold inline-block"
+                  rotationInterval={2500}
+                  staggerDuration={0.05}
+                  transition={{ type: "spring", damping: 20, stiffness: 300 }}
+                />
+                <span> construction services across Raipur, Nagpur & Bhandara. From dream homes to renovations, we build to last.</span>
+              </motion.div>
+              
+              <motion.div 
+                className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+              >
                 <Button size="lg" className="bg-primary hover:bg-primary/90">
                   <Link to="/packages">View Packages</Link>
                 </Button>
                 <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10" onClick={handleQuoteClick}>
                   Get Free Quote
                 </Button>
-              </div>
+              </motion.div>
             </div>
             
             <div className="w-full lg:w-1/2">
