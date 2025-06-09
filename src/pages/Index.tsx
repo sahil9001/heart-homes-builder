@@ -21,6 +21,10 @@ const Index = () => {
     setActiveCity(city);
   };
 
+  const handleQuoteClick = () => {
+    window.open('https://wa.me/919302494558?text=Hi,%20I%20would%20like%20to%20get%20a%20free%20quote%20for%20my%20construction%20project.', '_blank');
+  };
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -35,14 +39,14 @@ const Index = () => {
                 starting at <span className="text-accent">₹&nbsp;1,600&nbsp;/ sq&nbsp;ft</span>
               </h1>
               <p className="text-lg mb-8 text-gray-700">
-                SS Constructions delivers high-quality, transparent construction services across Raipur, Nagpur & Bhandara. From dream homes to renovations, we build to last.
+                Crafted Constructions delivers high-quality, transparent construction services across Raipur, Nagpur & Bhandara. From dream homes to renovations, we build to last.
               </p>
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                 <Button size="lg" className="bg-primary hover:bg-primary/90">
                   <Link to="/packages">View Packages</Link>
                 </Button>
-                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                  <Link to="/projects">See Our Projects</Link>
+                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10" onClick={handleQuoteClick}>
+                  Get Free Quote
                 </Button>
               </div>
             </div>
@@ -58,7 +62,7 @@ const Index = () => {
       <section className="section-padding bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-display font-medium mb-4">Why SS Constructions?</h2>
+            <h2 className="text-3xl sm:text-4xl font-display font-medium mb-4">Why Crafted Constructions?</h2>
             <p className="text-gray-600 max-w-xl mx-auto">
               Since 2016, we've been building quality homes and lasting relationships across central India.
             </p>
@@ -261,8 +265,8 @@ const Index = () => {
           </div>
           
           <div className="text-center mt-8">
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
-              <Link to="/projects">View All Projects</Link>
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10" onClick={handleQuoteClick}>
+              View More Projects
             </Button>
           </div>
         </div>
@@ -292,8 +296,8 @@ const Index = () => {
             Get in touch with our experts today and take the first step toward your perfect home.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90">
-              <Link to="/contact">Get Free Quote</Link>
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90" onClick={handleQuoteClick}>
+              Get Free Quote
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
               <Link to="/packages">View Packages</Link>
