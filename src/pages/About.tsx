@@ -9,7 +9,7 @@ const About = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      
+
       {/* Header */}
       <section className="bg-gradient-to-br from-gray-50 to-gray-100 pt-32 pb-16">
         <div className="container mx-auto px-4">
@@ -21,7 +21,7 @@ const About = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Our Story */}
       <section className="section-padding bg-white">
         <div className="container mx-auto px-4">
@@ -38,14 +38,14 @@ const About = () => {
                 What started as a small team in Raipur has now expanded to Nagpur and Bhandara, with over 100 successful projects completed across residential, commercial, and renovation segments.
               </p>
             </div>
-            
+
             <div className="rounded-xl overflow-hidden shadow-soft">
               <img src="/about/founder.jpg" alt="Vinod Silare, Founder" className="w-full h-auto" />
             </div>
           </div>
         </div>
       </section>
-      
+
       {/* Our Journey */}
       <section className="section-padding bg-gray-50">
         <div className="container mx-auto px-4">
@@ -55,11 +55,11 @@ const About = () => {
               A decade of growth, learning, and continuous improvement.
             </p>
           </div>
-          
+
           <div className="relative max-w-4xl mx-auto">
             {/* Timeline Line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-primary/20"></div>
-            
+
             {/* 2016 - Foundation */}
             <div className="relative mb-16">
               <div className="absolute left-1/2 transform -translate-x-1/2 -top-4 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
@@ -67,7 +67,7 @@ const About = () => {
                   <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
                 </svg>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="md:text-right">
                   <h3 className="text-2xl font-display font-medium mb-2">2016 - Foundation</h3>
@@ -82,7 +82,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* 2018 - Expansion */}
             <div className="relative mb-16">
               <div className="absolute left-1/2 transform -translate-x-1/2 -top-4 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
@@ -91,7 +91,7 @@ const About = () => {
                   <path fillRule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clipRule="evenodd"></path>
                 </svg>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="order-last md:order-first">
                   <div className="rounded-lg overflow-hidden">
@@ -106,7 +106,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* 2020 - Challenges & Adaptation */}
             <div className="relative mb-16">
               <div className="absolute left-1/2 transform -translate-x-1/2 -top-4 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
@@ -114,7 +114,7 @@ const About = () => {
                   <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
                 </svg>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="md:text-right">
                   <h3 className="text-2xl font-display font-medium mb-2">2020 - Challenges & Adaptation</h3>
@@ -129,7 +129,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* 2022 - Innovation */}
             <div className="relative mb-16">
               <div className="absolute left-1/2 transform -translate-x-1/2 -top-4 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
@@ -137,7 +137,7 @@ const About = () => {
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd"></path>
                 </svg>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="order-last md:order-first">
                   <div className="rounded-lg overflow-hidden">
@@ -152,7 +152,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* 2025 - Future Vision */}
             <div className="relative">
               <div className="absolute left-1/2 transform -translate-x-1/2 -top-4 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
@@ -160,7 +160,7 @@ const About = () => {
                   <path fillRule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd"></path>
                 </svg>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="md:text-right">
                   <h3 className="text-2xl font-display font-medium mb-2">2025 - Future Vision</h3>
@@ -178,7 +178,7 @@ const About = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Our Team */}
       <section className="section-padding bg-white">
         <div className="container mx-auto px-4">
@@ -188,7 +188,7 @@ const About = () => {
               The talented professionals who bring your dream homes to life with skill, precision, and passion.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Founder */}
             <div className="bg-white rounded-xl shadow-soft overflow-hidden text-center">
@@ -203,61 +203,18 @@ const About = () => {
                 </p>
               </div>
             </div>
-            
-            {/* Chief Architect */}
-            <div className="bg-white rounded-xl shadow-soft overflow-hidden text-center">
-              <div className="h-64 overflow-hidden">
-                <img src="/about/team-2.jpg" alt="Priya Sharma" className="w-full h-full object-cover" />
-              </div>
-              <div className="p-6">
-                <h3 className="font-display font-medium text-xl mb-1">Priya Sharma</h3>
-                <p className="text-primary mb-2">Chief Architect</p>
-                <p className="text-gray-600 text-sm">
-                  Priya brings creative vision to our projects, specializing in functional yet aesthetically pleasing designs.
-                </p>
-              </div>
-            </div>
-            
-            {/* Project Manager */}
-            <div className="bg-white rounded-xl shadow-soft overflow-hidden text-center">
-              <div className="h-64 overflow-hidden">
-                <img src="/about/team-3.jpg" alt="Rajesh Patel" className="w-full h-full object-cover" />
-              </div>
-              <div className="p-6">
-                <h3 className="font-display font-medium text-xl mb-1">Rajesh Patel</h3>
-                <p className="text-primary mb-2">Senior Project Manager</p>
-                <p className="text-gray-600 text-sm">
-                  Rajesh ensures our projects are delivered on time and within budget without compromising on quality.
-                </p>
-              </div>
-            </div>
-            
-            {/* Civil Engineer */}
-            <div className="bg-white rounded-xl shadow-soft overflow-hidden text-center">
-              <div className="h-64 overflow-hidden">
-                <img src="/about/team-4.jpg" alt="Anil Verma" className="w-full h-full object-cover" />
-              </div>
-              <div className="p-6">
-                <h3 className="font-display font-medium text-xl mb-1">Anil Verma</h3>
-                <p className="text-primary mb-2">Head Civil Engineer</p>
-                <p className="text-gray-600 text-sm">
-                  Anil's technical expertise ensures that all our structures are built to last with the highest safety standards.
-                </p>
-              </div>
+
+            <div className="mt-16 text-center">
+              <p className="text-gray-600 mb-8">
+                Beyond our core team, we employ skilled craftsmen, technicians, and support staff who contribute to our mission of building quality homes across central India.
+              </p>
+              <Button className="bg-primary hover:bg-primary/90">
+                <Link to="/contact">Work With Us</Link>
+              </Button>
             </div>
           </div>
-          
-          <div className="mt-16 text-center">
-            <p className="text-gray-600 mb-8">
-              Beyond our core team, we employ skilled craftsmen, technicians, and support staff who contribute to our mission of building quality homes across central India.
-            </p>
-            <Button className="bg-primary hover:bg-primary/90">
-              <Link to="/contact">Work With Us</Link>
-            </Button>
-          </div>
-        </div>
       </section>
-      
+
       {/* CSR Section */}
       <section className="section-padding bg-gray-50">
         <div className="container mx-auto px-4">
@@ -267,13 +224,13 @@ const About = () => {
                 <img src="/about/csr.jpg" alt="Corporate Social Responsibility" className="w-full h-auto" />
               </div>
             </div>
-            
+
             <div>
               <h2 className="text-3xl sm:text-4xl font-display font-medium mb-6">Our Commitment to Society</h2>
               <p className="text-gray-600 mb-6">
                 At SS Constructions, we believe in building more than just structures—we're committed to building stronger communities and a sustainable future.
               </p>
-              
+
               <div className="space-y-6">
                 <div>
                   <h4 className="font-medium text-lg mb-2 flex items-center">
@@ -286,7 +243,7 @@ const About = () => {
                     We prioritize hiring from local communities, providing training and employment opportunities to skilled and unskilled workers in the regions we operate.
                   </p>
                 </div>
-                
+
                 <div>
                   <h4 className="font-medium text-lg mb-2 flex items-center">
                     <svg className="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -298,7 +255,7 @@ const About = () => {
                     Our construction practices incorporate environmentally sustainable techniques, including waste reduction, water conservation, and energy-efficient designs.
                   </p>
                 </div>
-                
+
                 <div>
                   <h4 className="font-medium text-lg mb-2 flex items-center">
                     <svg className="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -315,7 +272,7 @@ const About = () => {
           </div>
         </div>
       </section>
-      
+
       {/* CTA Section */}
       <section className="py-16 bg-primary">
         <div className="container mx-auto px-4 text-center">
@@ -335,7 +292,7 @@ const About = () => {
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );

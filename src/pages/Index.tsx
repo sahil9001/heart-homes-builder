@@ -14,9 +14,9 @@ import ProjectCard from '@/components/ProjectCard';
 
 const Index = () => {
   const [activeCity, setActiveCity] = useState<string>('all');
-  
-  const filteredProjects = activeCity === 'all' 
-    ? projects.slice(0, 3) 
+
+  const filteredProjects = activeCity === 'all'
+    ? projects.slice(0, 3)
     : projects.filter(project => project.location.toLowerCase() === activeCity.toLowerCase()).slice(0, 3);
 
   const handleCityChange = (city: string) => {
@@ -30,23 +30,23 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-gray-50 to-gray-100 pt-32 pb-16">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center">
             <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
-              <motion.h1 
+              <motion.h1
                 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 text-gray-900"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                Homes built with <span className="text-primary">heart</span>,<br /> 
+                Homes built with <span className="text-primary">heart</span>,<br />
                 starting at <span className="text-accent">₹&nbsp;1,600&nbsp;/ sq&nbsp;ft</span>
               </motion.h1>
-              
-              <motion.div 
+
+              <motion.div
                 className="text-lg mb-8 text-gray-700"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -69,8 +69,8 @@ const Index = () => {
                 />
                 <span> construction services across Raipur, Nagpur & Bhandara. From dream homes to renovations, we build to last.</span>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -84,14 +84,14 @@ const Index = () => {
                 </Button>
               </motion.div>
             </div>
-            
+
             <div className="w-full lg:w-1/2">
               <SqftEstimator />
             </div>
           </div>
         </div>
       </section>
-      
+
       {/* Why Choose Us Section */}
       <section className="section-padding bg-white">
         <div className="container mx-auto px-4">
@@ -101,7 +101,7 @@ const Index = () => {
               Since 2016, we've been building quality homes and lasting relationships across central India.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1: Quality */}
             <div className="bg-white rounded-xl shadow-soft p-6 card-hover">
@@ -115,7 +115,7 @@ const Index = () => {
                 We use premium materials and proven construction techniques to ensure your home stands the test of time, backed by warranties of up to 20 years.
               </p>
             </div>
-            
+
             {/* Card 2: Transparency */}
             <div className="bg-white rounded-xl shadow-soft p-6 card-hover">
               <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
@@ -129,7 +129,7 @@ const Index = () => {
                 Our per-square-foot pricing model eliminates hidden costs. What you see is what you pay—no surprises or last-minute additions.
               </p>
             </div>
-            
+
             {/* Card 3: On-time Delivery */}
             <div className="bg-white rounded-xl shadow-soft p-6 card-hover">
               <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
@@ -145,7 +145,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Package Teaser */}
       <section className="section-padding bg-gray-50">
         <div className="container mx-auto px-4">
@@ -155,7 +155,7 @@ const Index = () => {
               Choose from our transparent pricing packages designed to fit every budget and requirement.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Starter Package */}
             <div className="bg-white p-6 rounded-xl shadow-soft card-hover">
@@ -185,7 +185,7 @@ const Index = () => {
                 <Link to="/packages" className="w-full">View Details</Link>
               </Button>
             </div>
-            
+
             {/* Classic Package */}
             <div className="bg-white p-6 rounded-xl shadow-soft card-hover border-2 border-primary relative">
               <div className="absolute top-4 right-4 bg-primary text-white px-2 py-1 text-xs font-medium rounded">
@@ -217,7 +217,7 @@ const Index = () => {
                 <Link to="/packages" className="w-full">View Details</Link>
               </Button>
             </div>
-            
+
             {/* Premium Package */}
             <div className="bg-white p-6 rounded-xl shadow-soft card-hover">
               <h3 className="text-2xl font-display font-medium mb-2">Premium</h3>
@@ -249,63 +249,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-      
-      {/* Featured Projects */}
-      <section className="section-padding bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-display font-medium mb-4">Our Featured Projects</h2>
-            <p className="text-gray-600 max-w-xl mx-auto">
-              Explore our work across different locations
-            </p>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
-            <CityBadge 
-              city="All" 
-              active={activeCity === 'all'} 
-              onClick={() => handleCityChange('all')} 
-            />
-            <CityBadge 
-              city="Raipur" 
-              active={activeCity === 'raipur'} 
-              onClick={() => handleCityChange('raipur')} 
-            />
-            <CityBadge 
-              city="Nagpur" 
-              active={activeCity === 'nagpur'} 
-              onClick={() => handleCityChange('nagpur')} 
-            />
-            <CityBadge 
-              city="Bhandara" 
-              active={activeCity === 'bhandara'} 
-              onClick={() => handleCityChange('bhandara')} 
-            />
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {filteredProjects.map(project => (
-              <ProjectCard
-                key={project.id}
-                id={project.id}
-                title={project.title}
-                location={project.location}
-                area={project.area}
-                slug={project.slug}
-                thumbnail={project.thumbnail}
-                package={project.package}
-              />
-            ))}
-          </div>
-          
-          <div className="text-center mt-8">
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10" onClick={handleQuoteClick}>
-              View More Projects
-            </Button>
-          </div>
-        </div>
-      </section>
-      
+
       {/* Testimonials */}
       <section className="section-padding bg-gray-50">
         <div className="container mx-auto px-4">
@@ -315,11 +259,11 @@ const Index = () => {
               Don't take our word for it—hear from the homeowners we've had the pleasure of serving.
             </p>
           </div>
-          
+
           <TestimonialCarousel />
         </div>
       </section>
-      
+
       {/* CTA Section */}
       <section className="py-16 bg-primary">
         <div className="container mx-auto px-4 text-center">
@@ -339,7 +283,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );
