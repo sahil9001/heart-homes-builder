@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -39,7 +40,7 @@ const About = () => {
             </div>
 
             <div className="rounded-xl overflow-hidden shadow-soft">
-              <img src="/about/founder.jpg" alt="Vinod Silare, Founder" className="w-full h-auto" />
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop" alt="Vinod Silare, Founder" className="w-full h-auto" />
             </div>
           </div>
         </div>
@@ -71,12 +72,12 @@ const About = () => {
                 <div className="md:text-right">
                   <h3 className="text-2xl font-display font-medium mb-2">2016 - Foundation</h3>
                   <p className="text-gray-600">
-                    SS Constructions was established in Raipur with a small team of 10 professionals. Completed our first 5 residential projects, setting the foundation for our quality standards.
+                    Crafted Constructions was established in Raipur with a small team of 10 professionals. Completed our first 5 residential projects, setting the foundation for our quality standards.
                   </p>
                 </div>
                 <div className="order-first md:order-last">
                   <div className="rounded-lg overflow-hidden">
-                    <img src="/about/timeline-2016.jpg" alt="SS Constructions foundation" className="w-full h-auto" />
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&h=400&fit=crop" alt="Construction foundation" className="w-full h-auto" />
                   </div>
                 </div>
               </div>
@@ -94,7 +95,7 @@ const About = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="order-last md:order-first">
                   <div className="rounded-lg overflow-hidden">
-                    <img src="/about/timeline-2018.jpg" alt="SS Constructions expansion" className="w-full h-auto" />
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop" alt="Construction expansion" className="w-full h-auto" />
                   </div>
                 </div>
                 <div>
@@ -123,7 +124,7 @@ const About = () => {
                 </div>
                 <div className="order-first md:order-last">
                   <div className="rounded-lg overflow-hidden">
-                    <img src="/about/timeline-2020.jpg" alt="SS Constructions during pandemic" className="w-full h-auto" />
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop" alt="Construction during pandemic" className="w-full h-auto" />
                   </div>
                 </div>
               </div>
@@ -140,7 +141,7 @@ const About = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="order-last md:order-first">
                   <div className="rounded-lg overflow-hidden">
-                    <img src="/about/timeline-2022.jpg" alt="SS Constructions innovation" className="w-full h-auto" />
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop" alt="Modern construction innovation" className="w-full h-auto" />
                   </div>
                 </div>
                 <div>
@@ -169,7 +170,7 @@ const About = () => {
                 </div>
                 <div className="order-first md:order-last">
                   <div className="rounded-lg overflow-hidden">
-                    <img src="/about/timeline-2025.jpg" alt="SS Constructions future vision" className="w-full h-auto" />
+                    <img src="https://images.unsplash.com/photo-1448630360428-65456885c650?w=600&h=400&fit=crop" alt="Future construction vision" className="w-full h-auto" />
                   </div>
                 </div>
               </div>
@@ -192,7 +193,7 @@ const About = () => {
             {/* Founder */}
             <div className="bg-white rounded-xl shadow-soft overflow-hidden text-center">
               <div className="h-64 overflow-hidden">
-                <img src="/about/team-1.jpg" alt="Vinod Silare" className="w-full h-full object-cover" />
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop" alt="Vinod Silare" className="w-full h-full object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="font-display font-medium text-xl mb-1">Vinod Silare</h3>
@@ -221,14 +222,14 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-last lg:order-first">
               <div className="rounded-xl overflow-hidden shadow-soft">
-                <img src="/about/csr.jpg" alt="Corporate Social Responsibility" className="w-full h-auto" />
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop" alt="Corporate Social Responsibility" className="w-full h-auto" />
               </div>
             </div>
 
             <div>
               <h2 className="text-3xl sm:text-4xl font-display font-medium mb-6">Our Commitment to Society</h2>
               <p className="text-gray-600 mb-6">
-                At SS Constructions, we believe in building more than just structures—we're committed to building stronger communities and a sustainable future.
+                At Crafted Constructions, we believe in building more than just structures—we're committed to building stronger communities and a sustainable future.
               </p>
 
               <div className="space-y-6">
