@@ -191,8 +191,9 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-3 gap-8">
             {/* Founder */}
+            <div></div>
             <div className="bg-white rounded-xl shadow-soft overflow-hidden text-center">
               <div className="h-64 bg-gray-200 flex items-center justify-center">
                 <span className="text-gray-500">Profile Photo</span>
@@ -201,19 +202,20 @@ const About = () => {
                 <h3 className="font-display font-medium text-xl mb-1">Vinod Silare</h3>
                 <p className="text-primary mb-2">Founder & CEO</p>
                 <p className="text-gray-600 text-sm">
-                  With over 20 years of experience in construction, Vinod leads the company with his vision for quality and transparency.
+                  With over 10 years of experience in construction, Vinod leads the company with his vision for quality and transparency.
                 </p>
               </div>
             </div>
 
-            <div className="mt-16 text-center">
-              <p className="text-gray-600 mb-8">
-                Beyond our core team, we employ skilled craftsmen, technicians, and support staff who contribute to our mission of building quality homes across central India.
-              </p>
-              <Button className="bg-primary hover:bg-primary/90">
-                <Link to="/contact">Work With Us</Link>
-              </Button>
-            </div>
+
+          </div>
+          <div className="mt-16 text-center">
+            <p className="text-gray-600 mb-8">
+              Beyond our core team, we employ skilled craftsmen, technicians, and support staff who contribute to our mission of building quality homes across central India.
+            </p>
+            <Button className="bg-primary hover:bg-primary/90">
+              <Link to="/contact">Work With Us</Link>
+            </Button>
           </div>
         </div>
       </section>
