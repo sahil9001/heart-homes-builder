@@ -11,6 +11,7 @@ SS Constructions is a premium construction company that has been building qualit
 - Tagline: Homes built with heart
 - Starting Price: ₹ 1,600 per sq ft
 - Service Areas: Raipur (Chhattisgarh), Nagpur (Maharashtra), Bhandara (Maharashtra)
+- Website: https://craftedconstructions.in
 
 ## Services Offered
 - House Construction
@@ -26,11 +27,11 @@ SS Constructions is a premium construction company that has been building qualit
 - WhatsApp: +91 84355 32184
 
 ## Website Structure
-- Homepage: Complete overview of services and company
-- Packages: Detailed construction packages and pricing
-- Process: Step-by-step construction process
-- About: Company history and team information
-- Contact: Multiple contact methods and locations
+- Homepage: https://craftedconstructions.in/ - Complete overview of services and company
+- Packages: https://craftedconstructions.in/packages - Detailed construction packages and pricing
+- Process: https://craftedconstructions.in/process - Step-by-step construction process
+- About: https://craftedconstructions.in/about - Company history and team information
+- Contact: https://craftedconstructions.in/contact - Multiple contact methods and locations
 
 ## Key Features
 - Transparent pricing starting at ₹ 1,600/sq ft

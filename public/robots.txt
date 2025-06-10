@@ -9,7 +9,7 @@ Allow: /about
 Allow: /contact
 
 # Sitemap location
-Sitemap: https://ssconstructions.com/sitemap.xml
+Sitemap: https://craftedconstructions.in/sitemap.xml
 
 # Specific bot permissions
 User-agent: Googlebot
