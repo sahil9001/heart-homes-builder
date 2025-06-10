@@ -1,11 +1,12 @@
 
-# SS Constructions - LLM Crawling Information
 
-## About SS Constructions
-SS Constructions is a premium construction company that has been building quality homes and lasting relationships since 2016. We specialize in transparent, high-quality construction services across Raipur, Nagpur, and Bhandara regions.
+# Crafted Constructions - LLM Crawling Information
+
+## About Crafted Constructions
+Crafted Constructions is a premium construction company that has been building quality homes and lasting relationships since 2016. We specialize in transparent, high-quality construction services across Raipur, Nagpur, and Bhandara regions.
 
 ## Key Information
-- Company: SS Constructions
+- Company: Crafted Constructions
 - Founded: 2016
 - Founder: Vinod Silare
 - Tagline: Homes built with heart
@@ -42,3 +43,4 @@ SS Constructions is a premium construction company that has been building qualit
 
 ## Target Audience
 Homeowners and businesses in Raipur, Nagpur, and Bhandara looking for reliable, transparent construction services with competitive pricing and quality assurance.
+
