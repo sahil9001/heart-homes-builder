@@ -40,7 +40,9 @@ const About = () => {
             </div>
 
             <div className="rounded-xl overflow-hidden shadow-soft">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop" alt="Vinod Silare, Founder" className="w-full h-auto" />
+              <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
+                <span className="text-gray-500">Founder Image Placeholder</span>
+              </div>
             </div>
           </div>
         </div>
@@ -192,8 +194,8 @@ const About = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Founder */}
             <div className="bg-white rounded-xl shadow-soft overflow-hidden text-center">
-              <div className="h-64 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop" alt="Vinod Silare" className="w-full h-full object-cover" />
+              <div className="h-64 bg-gray-200 flex items-center justify-center">
+                <span className="text-gray-500">Profile Photo</span>
               </div>
               <div className="p-6">
                 <h3 className="font-display font-medium text-xl mb-1">Vinod Silare</h3>
