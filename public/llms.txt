@@ -1,0 +1,43 @@
+
+# SS Constructions - LLM Crawling Information
+
+## About SS Constructions
+SS Constructions is a premium construction company that has been building quality homes and lasting relationships since 2016. We specialize in transparent, high-quality construction services across Raipur, Nagpur, and Bhandara regions.
+
+## Key Information
+- Company: SS Constructions
+- Founded: 2016
+- Founder: Vinod Silare
+- Tagline: Homes built with heart
+- Starting Price: ₹ 1,600 per sq ft
+- Service Areas: Raipur (Chhattisgarh), Nagpur (Maharashtra), Bhandara (Maharashtra)
+
+## Services Offered
+- House Construction
+- Home Renovation
+- Commercial Construction
+- Transparent pricing with no hidden costs
+- Quality materials and skilled craftsmanship
+- Complete project management
+
+## Contact Information
+- Phone: +91 84355 32184
+- Email: info@craftedconstructions.com
+- WhatsApp: +91 84355 32184
+
+## Website Structure
+- Homepage: Complete overview of services and company
+- Packages: Detailed construction packages and pricing
+- Process: Step-by-step construction process
+- About: Company history and team information
+- Contact: Multiple contact methods and locations
+
+## Key Features
+- Transparent pricing starting at ₹ 1,600/sq ft
+- Multiple service locations across Central India
+- WhatsApp integration for instant communication
+- Mobile-responsive design
+- Professional construction expertise since 2016
+
+## Target Audience
+Homeowners and businesses in Raipur, Nagpur, and Bhandara looking for reliable, transparent construction services with competitive pricing and quality assurance.
