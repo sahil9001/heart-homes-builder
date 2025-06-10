@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -16,7 +15,7 @@ const About = () => {
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl font-display font-bold mb-4">About Us</h1>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              Get to know the story and the people behind SS Constructions, building quality homes and lasting relationships since 2016.
+              Get to know the story and the people behind Crafted Constructions, building quality homes and lasting relationships since 2016.
             </p>
           </div>
         </div>
@@ -29,7 +28,7 @@ const About = () => {
             <div>
               <h2 className="text-3xl sm:text-4xl font-display font-medium mb-6">Our Story</h2>
               <p className="text-gray-600 mb-4">
-                SS Constructions was founded in 2016 by Vinod Silare with a vision to transform the construction industry in central India through transparency, quality, and client-focused service.
+                Crafted Constructions was founded in 2016 by Vinod Silare with a vision to transform the construction industry in central India through transparency, quality, and client-focused service.
               </p>
               <p className="text-gray-600 mb-4">
                 After working for over 15 years in the construction sector, Vinod identified a critical gap in the market: clients were tired of hidden costs, unclear timelines, and compromised quality. This inspired him to establish a company that would set new standards for transparency and reliability in the industry.
@@ -213,6 +212,7 @@ const About = () => {
               </Button>
             </div>
           </div>
+        </div>
       </section>
 
       {/* CSR Section */}
