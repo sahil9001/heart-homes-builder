@@ -1,10 +1,22 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import QuoteForm from '@/components/QuoteForm';
 
 const Contact = () => {
+  useEffect(() => {
+    // Set canonical URL for this page
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute('href', 'https://craftedconstructions.in/contact');
+    } else {
+      const link = document.createElement('link');
+      link.rel = 'canonical';
+      link.href = 'https://craftedconstructions.in/contact';
+      document.head.appendChild(link);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navbar />

@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -10,6 +9,17 @@ const NotFound = () => {
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    
+    // Set canonical URL for this page
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute('href', `https://craftedconstructions.in${location.pathname}`);
+    } else {
+      const link = document.createElement('link');
+      link.rel = 'canonical';
+      link.href = `https://craftedconstructions.in${location.pathname}`;
+      document.head.appendChild(link);
+    }
   }, [location.pathname]);
 
   return (

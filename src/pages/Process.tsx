@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProcessTimeline from '@/components/ProcessTimeline';
@@ -7,6 +6,19 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const Process = () => {
+  useEffect(() => {
+    // Set canonical URL for this page
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute('href', 'https://craftedconstructions.in/process');
+    } else {
+      const link = document.createElement('link');
+      link.rel = 'canonical';
+      link.href = 'https://craftedconstructions.in/process';
+      document.head.appendChild(link);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navbar />
