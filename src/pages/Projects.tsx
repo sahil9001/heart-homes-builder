@@ -4,94 +4,74 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CityBadge from '@/components/CityBadge';
 import ProjectCard from '@/components/ProjectCard';
+import ScrollReveal from '@/components/ScrollReveal';
 import { projects } from '@/data/projects';
 
 const Projects = () => {
   const [activeCity, setActiveCity] = useState<string>('all');
-  
-  const filteredProjects = activeCity === 'all' 
-    ? projects 
+
+  const filteredProjects = activeCity === 'all'
+    ? projects
     : projects.filter(project => project.location.toLowerCase() === activeCity.toLowerCase());
 
-  const handleCityChange = (city: string) => {
-    setActiveCity(city);
-  };
-
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#0A0A0A]">
       <Navbar />
-      
+
       {/* Header */}
-      <section className="bg-gradient-to-br from-gray-50 to-gray-100 pt-32 pb-16">
+      <section className="pt-32 pb-16 border-b border-[#222222]">
         <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl font-display font-bold mb-4">Our Projects</h1>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <ScrollReveal className="text-center">
+            <p className="text-[#5B8DEF] text-sm font-medium uppercase tracking-widest mb-4">Our Work</p>
+            <h1 className="text-4xl sm:text-5xl font-display font-bold text-[#FAFAFA] mb-6">Projects That Define Us</h1>
+            <p className="text-lg text-[#888888] max-w-3xl mx-auto">
               Explore our portfolio of completed projects across Raipur, Nagpur, and Bhandara. Each project represents our commitment to quality and client satisfaction.
             </p>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
-      
+
       {/* Project Gallery */}
-      <section className="section-padding bg-white">
+      <section className="section-padding">
         <div className="container mx-auto px-4">
           {/* Filter Chips */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
-            <CityBadge 
-              city="All" 
-              active={activeCity === 'all'} 
-              onClick={() => handleCityChange('all')} 
-            />
-            <CityBadge 
-              city="Raipur" 
-              active={activeCity === 'raipur'} 
-              onClick={() => handleCityChange('raipur')} 
-            />
-            <CityBadge 
-              city="Nagpur" 
-              active={activeCity === 'nagpur'} 
-              onClick={() => handleCityChange('nagpur')} 
-            />
-            <CityBadge 
-              city="Bhandara" 
-              active={activeCity === 'bhandara'} 
-              onClick={() => handleCityChange('bhandara')} 
-            />
+            <CityBadge city="All" active={activeCity === 'all'} onClick={() => setActiveCity('all')} />
+            <CityBadge city="Raipur" active={activeCity === 'raipur'} onClick={() => setActiveCity('raipur')} />
+            <CityBadge city="Nagpur" active={activeCity === 'nagpur'} onClick={() => setActiveCity('nagpur')} />
+            <CityBadge city="Bhandara" active={activeCity === 'bhandara'} onClick={() => setActiveCity('bhandara')} />
           </div>
-          
-          {/* Masonry Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map(project => (
-              <ProjectCard
-                key={project.id}
-                id={project.id}
-                title={project.title}
-                location={project.location}
-                area={project.area}
-                slug={project.slug}
-                thumbnail={project.thumbnail}
-                package={project.package}
-              />
+
+          {/* Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProjects.map((project, i) => (
+              <ScrollReveal key={project.id} delay={i * 0.05}>
+                <ProjectCard
+                  id={project.id}
+                  title={project.title}
+                  location={project.location}
+                  area={project.area}
+                  slug={project.slug}
+                  thumbnail={project.thumbnail}
+                  package={project.package}
+                />
+              </ScrollReveal>
             ))}
           </div>
-          
-          {/* No Results */}
+
           {filteredProjects.length === 0 && (
             <div className="text-center py-12">
-              <h3 className="text-2xl font-display font-medium mb-2">No projects found</h3>
-              <p className="text-gray-600">
-                No projects match your current filter. Please try another city or view all projects.
-              </p>
+              <h3 className="text-2xl font-display font-medium text-[#FAFAFA] mb-2">No projects found</h3>
+              <p className="text-[#888888]">No projects match your current filter. Try another city or view all.</p>
             </div>
           )}
         </div>
       </section>
-      
+
       {/* CTA Section */}
-      <section className="py-16 bg-primary">
+      <section className="py-16 bg-[#5B8DEF]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl sm:text-4xl font-display font-medium mb-6 text-white">
+          <h2 className="text-3xl sm:text-4xl font-display font-bold mb-6 text-white">
             Ready to Start Your Own Project?
           </h2>
           <p className="text-white/80 mb-8 max-w-xl mx-auto">
@@ -99,7 +79,7 @@ const Projects = () => {
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center bg-white text-primary px-8 py-3 rounded-lg hover:bg-white/90 transition-all text-lg font-medium"
+            className="inline-flex items-center bg-white text-[#5B8DEF] hover:bg-white/90 px-8 py-4 rounded-xl transition-all text-lg font-medium"
           >
             Get a Free Quote
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -108,7 +88,7 @@ const Projects = () => {
           </a>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );

@@ -27,18 +27,20 @@ export default {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        background: '#0A0A0A',
+        foreground: '#FAFAFA',
+        surface: '#111111',
         primary: {
-          DEFAULT: '#047857',
-          foreground: '#ffffff'
+          DEFAULT: '#5B8DEF',
+          foreground: '#ffffff',
+          hover: '#7AAAF5',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))'
         },
         accent: {
-          DEFAULT: '#f97316',
+          DEFAULT: '#5B8DEF',
           foreground: '#ffffff'
         },
         destructive: {
@@ -46,16 +48,16 @@ export default {
           foreground: 'hsl(var(--destructive-foreground))'
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
+          DEFAULT: '#111111',
+          foreground: '#888888'
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))'
+          DEFAULT: '#111111',
+          foreground: '#FAFAFA'
         },
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))'
+          DEFAULT: '#111111',
+          foreground: '#FAFAFA'
         },
         sidebar: {
           DEFAULT: 'hsl(var(--sidebar-background))',
@@ -68,14 +70,15 @@ export default {
           ring: 'hsl(var(--sidebar-ring))'
         }
       },
-      boxShadow: { 
-        soft: '0 8px 30px rgba(0,0,0,0.08)',
+      boxShadow: {
+        soft: '0 8px 30px rgba(0,0,0,0.3)',
+        'accent-glow': '0 0 20px rgba(91,141,239,0.3)',
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
-        xl: '1.25rem', 
+        xl: '1.25rem',
         '2xl': '1.75rem'
       },
       keyframes: {
@@ -94,7 +97,7 @@ export default {
       },
       fontFamily: {
         'sans': ['Inter', 'sans-serif'],
-        'display': ['Poppins', 'sans-serif'],
+        'display': ['"Clash Display"', 'sans-serif'],
       },
     },
   },
