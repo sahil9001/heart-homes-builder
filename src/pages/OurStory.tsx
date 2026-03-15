@@ -4,7 +4,25 @@ import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
+import SEO from '@/components/SEO';
 import { processSteps } from '@/data/process';
+
+const ourStorySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'Our Story — Crafted Constructions',
+  description: 'Learn about Crafted Constructions — founded by Vinod Silare in 2016, now serving Raipur, Nagpur & Bhandara with quality home construction.',
+  url: 'https://craftedconstructions.in/our-story',
+  mainEntity: {
+    '@type': 'ConstructionCompany',
+    name: 'Crafted Constructions',
+    foundingDate: '2016',
+    founder: { '@type': 'Person', name: 'Vinod Silare', jobTitle: 'Founder & CEO' },
+    numberOfEmployees: { '@type': 'QuantitativeValue', value: '35' },
+    description: 'Crafted Constructions delivers transparent, quality home construction across central India since 2016.',
+    areaServed: ['Raipur', 'Nagpur', 'Bhandara'],
+  },
+};
 
 const timeline = [
   {
@@ -40,20 +58,16 @@ const timeline = [
 ];
 
 const OurStory = () => {
-  useEffect(() => {
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) {
-      canonical.setAttribute('href', 'https://craftedconstructions.in/our-story');
-    } else {
-      const link = document.createElement('link');
-      link.rel = 'canonical';
-      link.href = 'https://craftedconstructions.in/our-story';
-      document.head.appendChild(link);
-    }
-  }, []);
 
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
+      <SEO
+        title="Our Story & Construction Process"
+        description="From a small Raipur team in 2016 to 3 cities and 50+ projects — discover the Crafted Constructions story, our founders vision, and our step-by-step build process."
+        canonical="/our-story"
+        breadcrumbs={[{ name: 'Our Story', url: '/our-story' }]}
+        schema={ourStorySchema}
+      />
       <Navbar />
 
       {/* Header */}

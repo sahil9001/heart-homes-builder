@@ -1,25 +1,37 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import QuoteForm from '@/components/QuoteForm';
 import ScrollReveal from '@/components/ScrollReveal';
+import SEO from '@/components/SEO';
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Crafted Constructions',
+  description: 'Get a free construction quote from Crafted Constructions. Contact us for home building and renovation projects in Raipur, Nagpur, and Bhandara.',
+  url: 'https://craftedconstructions.in/contact',
+  mainEntity: {
+    '@type': 'LocalBusiness',
+    name: 'Crafted Constructions',
+    telephone: '+918435532184',
+    email: 'info@craftedconstructions.com',
+    openingHours: ['Mo-Fr 09:00-18:00', 'Sa 09:00-15:00'],
+  },
+};
 
 const Contact = () => {
-  useEffect(() => {
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) {
-      canonical.setAttribute('href', 'https://craftedconstructions.in/contact');
-    } else {
-      const link = document.createElement('link');
-      link.rel = 'canonical';
-      link.href = 'https://craftedconstructions.in/contact';
-      document.head.appendChild(link);
-    }
-  }, []);
 
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
+      <SEO
+        title="Contact Us — Free Quote"
+        description="Ready to build? Contact Crafted Constructions for a free consultation and quote. Serving Raipur, Nagpur & Bhandara. Response within 24 hours."
+        canonical="/contact"
+        breadcrumbs={[{ name: 'Contact', url: '/contact' }]}
+        schema={contactSchema}
+      />
       <Navbar />
 
       {/* Header */}

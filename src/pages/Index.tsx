@@ -10,7 +10,51 @@ import BentoGrid from '@/components/BentoGrid';
 import BentoTile from '@/components/BentoTile';
 import StatCounter from '@/components/StatCounter';
 import ScrollReveal from '@/components/ScrollReveal';
+import SEO from '@/components/SEO';
 import { projects } from '@/data/projects';
+
+const homepageSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': ['LocalBusiness', 'ConstructionCompany'],
+    name: 'Crafted Constructions',
+    alternateName: 'Crafted Constructions',
+    description: 'Quality home construction and renovation services at transparent prices. Homes built with heart starting at ₹1,600/sq ft across Raipur, Nagpur and Bhandara.',
+    url: 'https://craftedconstructions.in',
+    logo: 'https://craftedconstructions.in/logo.png',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    telephone: '+918435532184',
+    email: 'info@craftedconstructions.com',
+    foundingDate: '2016',
+    founder: { '@type': 'Person', name: 'Vinod Silare' },
+    priceRange: '₹₹₹',
+    slogan: 'Homes built with heart',
+    areaServed: [
+      { '@type': 'City', name: 'Raipur', containedInPlace: { '@type': 'State', name: 'Chhattisgarh' } },
+      { '@type': 'City', name: 'Nagpur', containedInPlace: { '@type': 'State', name: 'Maharashtra' } },
+      { '@type': 'City', name: 'Bhandara', containedInPlace: { '@type': 'State', name: 'Maharashtra' } },
+    ],
+    openingHours: ['Mo-Fr 09:00-18:00', 'Sa 09:00-15:00'],
+    serviceType: ['House Construction', 'Home Renovation', 'Commercial Construction'],
+    sameAs: [
+      'https://facebook.com/craftedconstructions',
+      'https://instagram.com/craftedconstructions',
+      'https://twitter.com/craftedconstructions',
+    ],
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '150' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Crafted Constructions',
+    url: 'https://craftedconstructions.in',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: 'https://craftedconstructions.in/projects?q={search_term_string}' },
+      'query-input': 'required name=search_term_string',
+    },
+  },
+];
 
 const handleQuoteClick = () => {
   window.open('https://wa.me/918435532184?text=Hi,%20I%20would%20like%20to%20get%20a%20free%20quote%20for%20my%20construction%20project.', '_blank');
@@ -21,6 +65,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
+      <SEO
+        title="Crafted Constructions — Homes Built with Heart | Starting at ₹1,600/sq ft"
+        description="Premium home construction and renovation services across Raipur, Nagpur & Bhandara. Transparent per-sqft pricing starting at ₹1,600. Founded 2016. Get a free quote today."
+        canonical="/"
+        schema={homepageSchema}
+      />
       <Navbar />
 
       {/* Hero Section */}

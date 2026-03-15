@@ -5,7 +5,25 @@ import Footer from '@/components/Footer';
 import CityBadge from '@/components/CityBadge';
 import ProjectCard from '@/components/ProjectCard';
 import ScrollReveal from '@/components/ScrollReveal';
+import SEO from '@/components/SEO';
 import { projects } from '@/data/projects';
+
+const projectsSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Crafted Constructions Project Portfolio',
+  description: 'Completed construction and renovation projects across Raipur, Nagpur, and Bhandara.',
+  url: 'https://craftedconstructions.in/projects',
+  numberOfItems: projects.length,
+  itemListElement: projects.map((project, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: project.title,
+    url: `https://craftedconstructions.in/projects/${project.slug}`,
+    image: project.thumbnail,
+    description: project.description,
+  })),
+};
 
 const Projects = () => {
   const [activeCity, setActiveCity] = useState<string>('all');
@@ -16,6 +34,13 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
+      <SEO
+        title="Construction Projects Portfolio"
+        description="Browse 50+ completed homes and renovations in Raipur, Nagpur & Bhandara. Starter, Classic and Premium builds — explore our work and get inspired."
+        canonical="/projects"
+        breadcrumbs={[{ name: 'Projects', url: '/projects' }]}
+        schema={projectsSchema}
+      />
       <Navbar />
 
       {/* Header */}

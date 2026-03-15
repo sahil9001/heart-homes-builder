@@ -1,12 +1,16 @@
-
 User-agent: *
 Allow: /
 
-# High-priority pages for crawling
-Allow: /packages
-Allow: /process
-Allow: /about
+# Core pages
+Allow: /services
+Allow: /our-story
+Allow: /projects
 Allow: /contact
+
+# Redirected pages (still crawlable, they 301 to new URLs)
+Allow: /packages
+Allow: /about
+Allow: /process
 
 # Sitemap location
 Sitemap: https://craftedconstructions.in/sitemap.xml
@@ -32,7 +36,7 @@ Allow: /
 User-agent: WhatsApp
 Allow: /
 
-# SEO and AI crawlers
+# AI crawlers
 User-agent: GPTBot
 Allow: /
 Crawl-delay: 2
@@ -49,6 +53,5 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-# Disallow admin or sensitive areas (if any exist in future)
-# Disallow: /admin/
-# Disallow: /private/
+User-agent: PerplexityBot
+Allow: /
