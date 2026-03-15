@@ -6,14 +6,48 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PackageCard from '@/components/PackageCard';
 import ScrollReveal from '@/components/ScrollReveal';
+import SEO from '@/components/SEO';
 import { buildPackages, renovatePackages } from '@/data/packages';
 import { faqItems } from '@/data/faq';
+
+const servicesSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Home Construction',
+    provider: { '@type': 'LocalBusiness', name: 'Crafted Constructions', url: 'https://craftedconstructions.in' },
+    name: 'New Construction Packages',
+    description: 'Transparent per-square-foot home construction packages starting at ₹1,600/sq ft. Starter, Classic, and Premium tiers available.',
+    areaServed: ['Raipur', 'Nagpur', 'Bhandara'],
+    offers: [
+      { '@type': 'Offer', name: 'Starter Package', price: '1600', priceCurrency: 'INR', priceSpecification: { '@type': 'UnitPriceSpecification', price: '1600', priceCurrency: 'INR', unitText: 'per sq ft' } },
+      { '@type': 'Offer', name: 'Classic Package', price: '1900', priceCurrency: 'INR', priceSpecification: { '@type': 'UnitPriceSpecification', price: '1900', priceCurrency: 'INR', unitText: 'per sq ft' } },
+      { '@type': 'Offer', name: 'Premium Package', price: '2300', priceCurrency: 'INR', priceSpecification: { '@type': 'UnitPriceSpecification', price: '2300', priceCurrency: 'INR', unitText: 'per sq ft' } },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  },
+];
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState('build');
 
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
+      <SEO
+        title="Construction Packages & Pricing"
+        description="Transparent per-sqft construction packages for Raipur, Nagpur & Bhandara. New build from ₹1,600/sq ft, renovation from ₹600/sq ft. No hidden costs — ever."
+        canonical="/services"
+        breadcrumbs={[{ name: 'Services & Packages', url: '/services' }]}
+        schema={servicesSchema}
+      />
       <Navbar />
 
       {/* Header */}

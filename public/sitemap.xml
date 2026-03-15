@@ -1,33 +1,178 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Core pages -->
   <url>
     <loc>https://craftedconstructions.in/</loc>
-    <lastmod>2025-06-10</lastmod>
+    <lastmod>2026-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>Crafted Constructions — Premium home builder in central India</image:title>
+    </image:image>
   </url>
+
   <url>
-    <loc>https://craftedconstructions.in/packages</loc>
-    <lastmod>2025-06-10</lastmod>
+    <loc>https://craftedconstructions.in/services</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://craftedconstructions.in/our-story</loc>
+    <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://craftedconstructions.in/process</loc>
-    <lastmod>2025-06-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://craftedconstructions.in/projects</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://craftedconstructions.in/about</loc>
-    <lastmod>2025-06-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+
   <url>
     <loc>https://craftedconstructions.in/contact</loc>
-    <lastmod>2025-06-10</lastmod>
+    <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
+
+  <!-- Project detail pages -->
+  <url>
+    <loc>https://craftedconstructions.in/projects/modern-family-villa-raipur</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80</image:loc>
+      <image:title>Modern Family Villa — Raipur, Premium Package</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://craftedconstructions.in/projects/apartment-complex-nagpur</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80</image:loc>
+      <image:title>Apartment Complex — Nagpur, Classic Package</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://craftedconstructions.in/projects/traditional-bungalow-bhandara</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80</image:loc>
+      <image:title>Traditional Bungalow — Bhandara, Classic Package</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://craftedconstructions.in/projects/farmhouse-project-raipur</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80</image:loc>
+      <image:title>Farmhouse Project — Raipur, Premium Package</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://craftedconstructions.in/projects/urban-studio-apartments-nagpur</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80</image:loc>
+      <image:title>Urban Studio Apartments — Nagpur, Starter Package</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://craftedconstructions.in/projects/home-renovation-bhandara</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80</image:loc>
+      <image:title>Home Renovation — Bhandara, Plus Package</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://craftedconstructions.in/projects/weekend-cottage-raipur</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1600047509358-9dc75507daeb?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80</image:loc>
+      <image:title>Weekend Cottage — Raipur, Starter Package</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://craftedconstructions.in/projects/office-complex-nagpur</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80</image:loc>
+      <image:title>Office Complex — Nagpur, Classic Package</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://craftedconstructions.in/projects/school-renovation-bhandara</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80</image:loc>
+      <image:title>School Renovation — Bhandara, Plus Package</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://craftedconstructions.in/projects/retail-space-raipur</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1556912167-f556b0c2cd3d?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80</image:loc>
+      <image:title>Retail Space — Raipur, Classic Package</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://craftedconstructions.in/projects/luxury-villa-nagpur</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80</image:loc>
+      <image:title>Luxury Villa — Nagpur, Premium Package</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://craftedconstructions.in/projects/budget-homes-bhandara</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80</image:loc>
+      <image:title>Budget Homes — Bhandara, Starter Package</image:title>
+    </image:image>
+  </url>
+
 </urlset>

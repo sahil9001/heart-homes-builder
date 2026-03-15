@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { projects } from '@/data/projects';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -45,10 +46,29 @@ const ProjectDetail = () => {
     );
   }
   
+  const projectSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    description: project.description,
+    url: `https://craftedconstructions.in/projects/${project.slug}`,
+    image: project.thumbnail,
+    locationCreated: { '@type': 'City', name: project.location },
+    creator: { '@type': 'LocalBusiness', name: 'Crafted Constructions', url: 'https://craftedconstructions.in' },
+  };
+
   return (
     <div className="min-h-screen">
+      <SEO
+        title={`${project.title} — ${project.location} ${project.package} Build`}
+        description={`${project.description}. ${project.area} ${project.package} package construction in ${project.location} by Crafted Constructions.`}
+        canonical={`/projects/${project.slug}`}
+        ogImage={project.thumbnail}
+        breadcrumbs={[{ name: 'Projects', url: '/projects' }, { name: project.title, url: `/projects/${project.slug}` }]}
+        schema={projectSchema}
+      />
       <Navbar />
-      
+
       {/* Project Header */}
       <section className="bg-gradient-to-br from-gray-50 to-gray-100 pt-32 pb-16">
         <div className="container mx-auto px-4">
