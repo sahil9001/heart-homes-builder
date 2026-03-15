@@ -9,13 +9,8 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -25,35 +20,35 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-[#0A0A0A]/90 backdrop-blur-md border-b border-[#222222]' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="font-display font-bold text-2xl text-primary">Crafted <span className="text-accent">Constructions</span></span>
+            <span className="font-display font-bold text-2xl text-[#FAFAFA]">Crafted <span className="text-[#5B8DEF]">Constructions</span></span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="font-medium text-gray-700 hover:text-primary transition-colors">Home</Link>
-            <Link to="/packages" className="font-medium text-gray-700 hover:text-primary transition-colors">Packages</Link>
-            <Link to="/process" className="font-medium text-gray-700 hover:text-primary transition-colors">Process</Link>
-            <Link to="/about" className="font-medium text-gray-700 hover:text-primary transition-colors">About</Link>
-            <Link to="/contact" className="font-medium text-gray-700 hover:text-primary transition-colors">Contact</Link>
+            <Link to="/" className="font-medium text-[#888888] hover:text-[#FAFAFA] transition-colors">Home</Link>
+            <Link to="/services" className="font-medium text-[#888888] hover:text-[#FAFAFA] transition-colors">Services</Link>
+            <Link to="/our-story" className="font-medium text-[#888888] hover:text-[#FAFAFA] transition-colors">Our Story</Link>
+            <Link to="/projects" className="font-medium text-[#888888] hover:text-[#FAFAFA] transition-colors">Projects</Link>
+            <Link to="/contact" className="font-medium text-[#888888] hover:text-[#FAFAFA] transition-colors">Contact</Link>
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-accent hover:bg-accent/90" onClick={handleQuoteClick}>
+            <Button className="bg-[#5B8DEF] hover:bg-[#7AAAF5] text-white" onClick={handleQuoteClick}>
               Get Free Quote
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button 
+            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-gray-500 focus:outline-none"
+              className="text-[#888888] focus:outline-none"
             >
               {mobileMenuOpen ? (
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
@@ -71,15 +66,15 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg border-t">
+        <div className="md:hidden bg-[#0A0A0A] border-t border-[#222222]">
           <div className="container mx-auto px-4 py-3">
             <div className="flex flex-col space-y-3">
-              <Link to="/" className="py-2 font-medium text-gray-700 hover:text-primary" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-              <Link to="/packages" className="py-2 font-medium text-gray-700 hover:text-primary" onClick={() => setMobileMenuOpen(false)}>Packages</Link>
-              <Link to="/process" className="py-2 font-medium text-gray-700 hover:text-primary" onClick={() => setMobileMenuOpen(false)}>Process</Link>
-              <Link to="/about" className="py-2 font-medium text-gray-700 hover:text-primary" onClick={() => setMobileMenuOpen(false)}>About</Link>
-              <Link to="/contact" className="py-2 font-medium text-gray-700 hover:text-primary" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
-              <Button className="w-full bg-accent hover:bg-accent/90" onClick={() => {handleQuoteClick(); setMobileMenuOpen(false);}}>
+              <Link to="/" className="py-2 font-medium text-[#888888] hover:text-[#FAFAFA]" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+              <Link to="/services" className="py-2 font-medium text-[#888888] hover:text-[#FAFAFA]" onClick={() => setMobileMenuOpen(false)}>Services</Link>
+              <Link to="/our-story" className="py-2 font-medium text-[#888888] hover:text-[#FAFAFA]" onClick={() => setMobileMenuOpen(false)}>Our Story</Link>
+              <Link to="/projects" className="py-2 font-medium text-[#888888] hover:text-[#FAFAFA]" onClick={() => setMobileMenuOpen(false)}>Projects</Link>
+              <Link to="/contact" className="py-2 font-medium text-[#888888] hover:text-[#FAFAFA]" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
+              <Button className="w-full bg-[#5B8DEF] hover:bg-[#7AAAF5] text-white" onClick={() => { handleQuoteClick(); setMobileMenuOpen(false); }}>
                 Get Free Quote
               </Button>
             </div>

@@ -1,7 +1,5 @@
 
 import React from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { CheckCircle } from 'lucide-react';
 
 interface PackageCardProps {
@@ -12,59 +10,60 @@ interface PackageCardProps {
   type: 'build' | 'renovate';
 }
 
-const PackageCard: React.FC<PackageCardProps> = ({ 
-  tier, 
-  rate, 
-  features, 
+const PackageCard: React.FC<PackageCardProps> = ({
+  tier,
+  rate,
+  features,
   recommended = false,
   type
 }) => {
   return (
-    <Card className={`card-hover ${recommended ? 'border-primary border-2' : ''} relative overflow-hidden`}>
+    <div className={`relative overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(91,141,239,0.2)] flex flex-col ${
+      recommended
+        ? 'bg-[#111111] border-[#5B8DEF]'
+        : 'bg-[#111111] border-[#222222]'
+    }`}>
       {recommended && (
-        <div className="absolute top-5 right-0 bg-primary text-white px-3 py-1 text-sm font-medium -mr-2">
+        <div className="absolute top-5 right-0 bg-[#5B8DEF] text-white px-3 py-1 text-sm font-medium rounded-l-lg">
           Most Popular
         </div>
       )}
-      
-      <CardHeader>
-        <CardTitle>{tier}</CardTitle>
-        <CardDescription>
-          {type === 'build' 
-            ? 'New Construction Package' 
-            : 'Renovation Package'
-          }
-        </CardDescription>
-      </CardHeader>
-      
-      <CardContent>
-        <div className="mb-6">
-          <p className="text-4xl font-display font-bold">
-            ₹{rate}
-            <span className="text-base font-normal text-muted-foreground"> / sq ft</span>
-          </p>
+
+      <div className="p-6 border-b border-[#222222]">
+        <h3 className="text-xl font-display font-medium text-[#FAFAFA] mb-1">{tier}</h3>
+        <p className="text-[#888888] text-sm">
+          {type === 'build' ? 'New Construction Package' : 'Renovation Package'}
+        </p>
+        <div className="mt-4">
+          <span className="text-4xl font-display font-bold text-[#FAFAFA]">₹{rate.toLocaleString()}</span>
+          <span className="text-[#888888] text-sm"> / sq ft</span>
         </div>
-        
+      </div>
+
+      <div className="p-6 flex-1">
         <ul className="space-y-3">
           {features.map((feature, index) => (
             <li key={index} className="flex items-start">
-              <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-              <span>{feature}</span>
+              <CheckCircle className="h-5 w-5 text-[#5B8DEF] mr-2 mt-0.5 flex-shrink-0" />
+              <span className="text-[#FAFAFA]/80">{feature}</span>
             </li>
           ))}
         </ul>
-      </CardContent>
-      
-      <CardFooter>
-        <Button 
-          variant={recommended ? "default" : "outline"} 
-          className={`w-full ${recommended ? 'bg-accent hover:bg-accent/90' : 'border-primary text-primary hover:bg-primary/10'}`}
-          onClick={() => window.location.href = "/contact"}
+      </div>
+
+      <div className="p-6 pt-0">
+        <button
+          className={`w-full py-3 px-6 rounded-lg font-medium transition-all ${
+            recommended
+              ? 'bg-[#5B8DEF] hover:bg-[#7AAAF5] text-white'
+              : 'border border-[#5B8DEF] text-[#5B8DEF] hover:bg-[#5B8DEF]/10'
+          }`}
+          onClick={() => window.location.href = '/contact'}
         >
           Get Quote
-        </Button>
-      </CardFooter>
-    </Card>
+        </button>
+      </div>
+    </div>
   );
 };
 
