@@ -12,6 +12,14 @@ interface ProjectCardProps {
   package: string;
 }
 
+const packageColors: Record<string, string> = {
+  Starter: '#7A7167',
+  Classic: '#D4A843',
+  Premium: '#E8C56A',
+  Plus: '#D4A843',
+  Lite: '#7A7167',
+};
+
 const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   location,
@@ -20,47 +28,59 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   thumbnail,
   package: packageType
 }) => {
+  const accentColor = packageColors[packageType] || '#D4A843';
+
   return (
-    <div className="overflow-hidden h-full group bg-[#111111] border border-[#222222] rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(91,141,239,0.2)]">
-      <div className="relative">
+    <Link to={`/projects/${slug}`} className="block group overflow-hidden relative bg-[#161310]">
+      {/* Image */}
+      <div className="relative overflow-hidden" style={{ paddingBottom: '70%' }}>
         <img
           src={thumbnail}
           alt={title}
-          className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
-          <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-            <Link
-              to={`/projects/${slug}`}
-              className="inline-block bg-[#5B8DEF] hover:bg-[#7AAAF5] text-white px-4 py-2 rounded-lg font-medium transition-colors"
-            >
-              View Story
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div className="p-4">
-        <div className="flex justify-between items-start mb-2">
-          <h3 className="font-display font-medium text-lg text-[#FAFAFA]">{title}</h3>
-          <span className="bg-[#5B8DEF]/10 text-[#5B8DEF] text-xs px-2 py-1 rounded border border-[#5B8DEF]/20">
+        {/* Dark gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0D0B09] via-[#0D0B09]/30 to-transparent" />
+
+        {/* Package badge */}
+        <div className="absolute top-4 left-4">
+          <span
+            className="font-mono text-[10px] uppercase tracking-[0.2em] px-2 py-1"
+            style={{ color: accentColor, border: `1px solid ${accentColor}40`, backgroundColor: '#0D0B0980' }}
+          >
             {packageType}
           </span>
         </div>
-        <div className="flex items-center text-sm text-[#888888]">
-          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+
+        {/* Hover reveal arrow */}
+        <div className="absolute top-4 right-4 w-8 h-8 border border-[#D4A843] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 bg-[#D4A843]">
+          <svg className="w-4 h-4 text-[#0D0B09]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 17L17 7M17 7H7M17 7v10" />
           </svg>
-          {location}
         </div>
-        <div className="flex items-center text-sm text-[#888888] mt-1">
-          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
-          </svg>
-          {area}
+
+        {/* Bottom info */}
+        <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+          <h3 className="font-display font-bold text-[#EDE8DE] text-lg leading-tight mb-1">{title}</h3>
+          <div className="flex items-center gap-3">
+            <span className="text-[#7A7167] text-xs font-mono flex items-center gap-1">
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              {location}
+            </span>
+            <span className="text-[#5A5249] text-xs font-mono">·</span>
+            <span className="text-[#7A7167] text-xs font-mono">{area}</span>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Bottom border that fills on hover */}
+      <div className="h-0.5 bg-[#2E2820] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[#D4A843] -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+      </div>
+    </Link>
   );
 };
 

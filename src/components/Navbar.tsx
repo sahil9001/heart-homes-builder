@@ -1,87 +1,140 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from "@/components/ui/button";
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   const handleQuoteClick = () => {
     window.open('https://wa.me/918435532184?text=Hi,%20I%20would%20like%20to%20get%20a%20free%20quote%20for%20my%20construction%20project.', '_blank');
   };
 
+  const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/services', label: 'Services' },
+    { href: '/projects', label: 'Projects' },
+    { href: '/our-story', label: 'Our Story' },
+    { href: '/contact', label: 'Contact' },
+  ];
+
+  const isActive = (href: string) => location.pathname === href;
+
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-[#0A0A0A]/90 backdrop-blur-md border-b border-[#222222]' : 'bg-transparent'}`}>
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between py-4">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <span className="font-display font-bold text-2xl text-[#FAFAFA]">Crafted <span className="text-[#5B8DEF]">Constructions</span></span>
-          </Link>
+    <>
+      <nav className={`fixed w-full z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'bg-[#0D0B09]/95 backdrop-blur-md border-b border-[#D4A843]/20'
+          : 'bg-transparent'
+      }`}>
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between h-18 py-4">
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="w-8 h-8 border border-[#D4A843] flex items-center justify-center">
+                <span className="text-[#D4A843] font-mono text-xs font-bold">CC</span>
+              </div>
+              <div className="leading-none">
+                <span className="font-display font-bold text-lg text-[#EDE8DE] tracking-tight block">
+                  Crafted
+                </span>
+                <span className="font-mono text-[10px] text-[#D4A843] uppercase tracking-[0.3em] block">
+                  Constructions
+                </span>
+              </div>
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="font-medium text-[#888888] hover:text-[#FAFAFA] transition-colors">Home</Link>
-            <Link to="/services" className="font-medium text-[#888888] hover:text-[#FAFAFA] transition-colors">Services</Link>
-            <Link to="/our-story" className="font-medium text-[#888888] hover:text-[#FAFAFA] transition-colors">Our Story</Link>
-            <Link to="/projects" className="font-medium text-[#888888] hover:text-[#FAFAFA] transition-colors">Projects</Link>
-            <Link to="/contact" className="font-medium text-[#888888] hover:text-[#FAFAFA] transition-colors">Contact</Link>
-          </div>
+            {/* Desktop Nav */}
+            <div className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={`text-xs font-mono uppercase tracking-widest transition-colors duration-200 ${
+                    isActive(link.href)
+                      ? 'text-[#D4A843]'
+                      : 'text-[#7A7167] hover:text-[#EDE8DE]'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button className="bg-[#5B8DEF] hover:bg-[#7AAAF5] text-white" onClick={handleQuoteClick}>
-              Get Free Quote
-            </Button>
-          </div>
+            {/* CTA */}
+            <div className="hidden md:block">
+              <button
+                onClick={handleQuoteClick}
+                className="bg-[#D4A843] text-[#0D0B09] text-xs font-semibold px-6 py-2.5 uppercase tracking-widest hover:bg-[#E8C56A] transition-all duration-200"
+              >
+                Get Free Quote
+              </button>
+            </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+            {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-[#888888] focus:outline-none"
+              className="md:hidden text-[#7A7167] hover:text-[#EDE8DE] transition-colors p-1"
+              aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-              )}
+              <div className="w-6 h-5 flex flex-col justify-between">
+                <span className={`block h-px bg-current transition-all duration-300 origin-center ${mobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`} />
+                <span className={`block h-px bg-current transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+                <span className={`block h-px bg-current transition-all duration-300 origin-center ${mobileMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`} />
+              </div>
             </button>
           </div>
         </div>
-      </div>
+
+        {/* Gold rule under nav when scrolled */}
+        {isScrolled && (
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D4A843]/30 to-transparent" />
+        )}
+      </nav>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0A0A0A] border-t border-[#222222]">
-          <div className="container mx-auto px-4 py-3">
-            <div className="flex flex-col space-y-3">
-              <Link to="/" className="py-2 font-medium text-[#888888] hover:text-[#FAFAFA]" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-              <Link to="/services" className="py-2 font-medium text-[#888888] hover:text-[#FAFAFA]" onClick={() => setMobileMenuOpen(false)}>Services</Link>
-              <Link to="/our-story" className="py-2 font-medium text-[#888888] hover:text-[#FAFAFA]" onClick={() => setMobileMenuOpen(false)}>Our Story</Link>
-              <Link to="/projects" className="py-2 font-medium text-[#888888] hover:text-[#FAFAFA]" onClick={() => setMobileMenuOpen(false)}>Projects</Link>
-              <Link to="/contact" className="py-2 font-medium text-[#888888] hover:text-[#FAFAFA]" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
-              <Button className="w-full bg-[#5B8DEF] hover:bg-[#7AAAF5] text-white" onClick={() => { handleQuoteClick(); setMobileMenuOpen(false); }}>
-                Get Free Quote
-              </Button>
+      <div className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div
+          className="absolute inset-0 bg-[#0D0B09]/80 backdrop-blur-sm"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+        <div className={`absolute top-0 right-0 h-full w-72 bg-[#0D0B09] border-l border-[#2E2820] transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className="flex flex-col h-full p-8 pt-24">
+            <div className="space-y-1 flex-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={`block py-3 border-b border-[#2E2820] text-sm font-mono uppercase tracking-widest transition-colors ${
+                    isActive(link.href) ? 'text-[#D4A843]' : 'text-[#7A7167] hover:text-[#EDE8DE]'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
+            <button
+              onClick={handleQuoteClick}
+              className="w-full bg-[#D4A843] text-[#0D0B09] text-xs font-bold px-6 py-4 uppercase tracking-widest hover:bg-[#E8C56A] transition-all"
+            >
+              Get Free Quote
+            </button>
+            <p className="text-[#5A5249] text-xs mt-4 text-center font-mono">EST. 2016 · RAIPUR · NAGPUR · BHANDARA</p>
           </div>
         </div>
-      )}
-    </nav>
+      </div>
+    </>
   );
 };
 

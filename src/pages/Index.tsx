@@ -5,11 +5,9 @@ import { motion } from 'motion/react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
-import HeadingReveal from '@/components/HeadingReveal';
-import BentoGrid from '@/components/BentoGrid';
-import BentoTile from '@/components/BentoTile';
 import StatCounter from '@/components/StatCounter';
 import ScrollReveal from '@/components/ScrollReveal';
+import ProjectCard from '@/components/ProjectCard';
 import SEO from '@/components/SEO';
 import { projects } from '@/data/projects';
 
@@ -18,41 +16,19 @@ const homepageSchema = [
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'ConstructionCompany'],
     name: 'Crafted Constructions',
-    alternateName: 'Crafted Constructions',
     description: 'Quality home construction and renovation services at transparent prices. Homes built with heart starting at ₹1,600/sq ft across Raipur, Nagpur and Bhandara.',
     url: 'https://craftedconstructions.in',
-    logo: 'https://craftedconstructions.in/logo.png',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     telephone: '+918435532184',
     email: 'info@craftedconstructions.com',
     foundingDate: '2016',
     founder: { '@type': 'Person', name: 'Vinod Silare' },
     priceRange: '₹₹₹',
-    slogan: 'Homes built with heart',
     areaServed: [
-      { '@type': 'City', name: 'Raipur', containedInPlace: { '@type': 'State', name: 'Chhattisgarh' } },
-      { '@type': 'City', name: 'Nagpur', containedInPlace: { '@type': 'State', name: 'Maharashtra' } },
-      { '@type': 'City', name: 'Bhandara', containedInPlace: { '@type': 'State', name: 'Maharashtra' } },
-    ],
-    openingHours: ['Mo-Fr 09:00-18:00', 'Sa 09:00-15:00'],
-    serviceType: ['House Construction', 'Home Renovation', 'Commercial Construction'],
-    sameAs: [
-      'https://facebook.com/craftedconstructions',
-      'https://instagram.com/craftedconstructions',
-      'https://twitter.com/craftedconstructions',
+      { '@type': 'City', name: 'Raipur' },
+      { '@type': 'City', name: 'Nagpur' },
+      { '@type': 'City', name: 'Bhandara' },
     ],
     aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '150' },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Crafted Constructions',
-    url: 'https://craftedconstructions.in',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: { '@type': 'EntryPoint', urlTemplate: 'https://craftedconstructions.in/projects?q={search_term_string}' },
-      'query-input': 'required name=search_term_string',
-    },
   },
 ];
 
@@ -60,11 +36,20 @@ const handleQuoteClick = () => {
   window.open('https://wa.me/918435532184?text=Hi,%20I%20would%20like%20to%20get%20a%20free%20quote%20for%20my%20construction%20project.', '_blank');
 };
 
+const services = [
+  { label: 'New Construction', icon: '◈' },
+  { label: 'Home Renovation', icon: '◈' },
+  { label: 'Commercial Builds', icon: '◈' },
+  { label: 'Smart Homes', icon: '◈' },
+  { label: 'Structural Design', icon: '◈' },
+  { label: 'Interior Finishing', icon: '◈' },
+];
+
 const Index = () => {
-  const featuredProjects = projects.slice(0, 3);
+  const featuredProjects = projects.slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[#0D0B09]">
       <SEO
         title="Crafted Constructions — Homes Built with Heart | Starting at ₹1,600/sq ft"
         description="Premium home construction and renovation services across Raipur, Nagpur & Bhandara. Transparent per-sqft pricing starting at ₹1,600. Founded 2016. Get a free quote today."
@@ -73,266 +58,364 @@ const Index = () => {
       />
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Noise/grain texture overlay */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: 'repeat',
-          backgroundSize: '128px',
-        }} />
-
-        {/* Subtle blue radial glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(91,141,239,0.08)_0%,_transparent_70%)]" />
-
-        <div className="container mx-auto px-4 pt-32 pb-20 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 bg-[#111111] border border-[#222222] rounded-full px-4 py-1.5 mb-8 text-sm text-[#888888]"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#5B8DEF] animate-pulse" />
-            Building since 2016 · Raipur · Nagpur · Bhandara
-          </motion.div>
-
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold text-[#FAFAFA] leading-none tracking-tight mb-8">
-            <HeadingReveal text="We Build" />
-            <br />
-            <HeadingReveal text="What Lasts." delay={0.3} />
-          </h1>
-
-          <motion.p
-            className="text-lg md:text-xl text-[#888888] max-w-2xl mx-auto mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            Crafted Constructions delivers transparent, quality construction across central India. From dream homes to complete renovations — starting at ₹1,600 / sq ft.
-          </motion.p>
-
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-          >
-            <Link
-              to="/services"
-              className="bg-[#5B8DEF] hover:bg-[#7AAAF5] text-white font-medium px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(91,141,239,0.4)]"
-            >
-              View Packages
-            </Link>
-            <button
-              onClick={handleQuoteClick}
-              className="border border-[#333333] text-[#FAFAFA] hover:border-[#5B8DEF] hover:text-[#5B8DEF] font-medium px-8 py-4 rounded-xl transition-all duration-300"
-            >
-              Get Free Quote
-            </button>
-          </motion.div>
+      {/* ─── HERO ─────────────────────────────────── */}
+      <section className="relative min-h-screen flex flex-col justify-end overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1800&q=85&fit=crop"
+            alt="Construction site"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[#0D0B09]/75" />
+          {/* Grid overlay */}
+          <div className="absolute inset-0 opacity-[0.04]" style={{
+            backgroundImage: 'linear-gradient(#D4A843 1px, transparent 1px), linear-gradient(to right, #D4A843 1px, transparent 1px)',
+            backgroundSize: '80px 80px',
+          }} />
         </div>
 
-        {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
+        {/* Content */}
+        <div className="container mx-auto px-6 pb-20 pt-40 relative z-10">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-3 mb-8"
+          >
+            <div className="h-px w-12 bg-[#D4A843]" />
+            <span className="font-mono text-[10px] text-[#D4A843] uppercase tracking-[0.35em]">
+              Est. 2016 · Raipur · Nagpur · Bhandara
+            </span>
+          </motion.div>
+
+          <div className="max-w-5xl">
+            <motion.h1
+              className="font-display font-bold text-[#EDE8DE] leading-[0.9] mb-8"
+              style={{ fontSize: 'clamp(3rem, 9vw, 8rem)' }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              We Build
+              <br />
+              <span className="text-[#D4A843] italic">What Lasts.</span>
+            </motion.h1>
+
+            <motion.p
+              className="text-[#7A7167] text-lg md:text-xl max-w-2xl mb-10 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              Crafted Constructions delivers transparent, quality construction across central India.
+              From dream homes to complete renovations — starting at ₹1,600 / sq ft.
+            </motion.p>
+
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+            >
+              <button
+                onClick={handleQuoteClick}
+                className="bg-[#D4A843] text-[#0D0B09] font-semibold px-8 py-4 uppercase tracking-widest text-xs hover:bg-[#E8C56A] hover:shadow-[0_0_30px_rgba(212,168,67,0.3)] transition-all duration-300"
+              >
+                Get Free Quote
+              </button>
+              <Link
+                to="/projects"
+                className="border border-[#EDE8DE]/30 text-[#EDE8DE] font-medium px-8 py-4 uppercase tracking-widest text-xs hover:border-[#D4A843] hover:text-[#D4A843] transition-all duration-300 text-center"
+              >
+                View Our Work
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Stats strip */}
+        <motion.div
+          className="relative z-10 border-t border-[#2E2820] bg-[#0D0B09]/80 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <div className="container mx-auto px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#2E2820]">
+              {[
+                { value: '9+', label: 'Years Experience' },
+                { value: '50+', label: 'Projects Delivered' },
+                { value: '3', label: 'Cities Served' },
+                { value: '₹1,600', label: 'Starting / sq ft' },
+              ].map((stat, i) => (
+                <div key={i} className="px-8 py-6 text-center">
+                  <div className="font-display font-bold text-2xl md:text-3xl text-[#EDE8DE] mb-1">{stat.value}</div>
+                  <div className="font-mono text-[10px] text-[#5A5249] uppercase tracking-[0.2em]">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </section>
 
-      {/* Services Bento Grid */}
-      <section className="section-padding">
-        <div className="container mx-auto px-4">
-          <ScrollReveal className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#FAFAFA] mb-4">What We Build</h2>
-            <p className="text-[#888888] max-w-xl mx-auto">
-              From the foundation to the finishing touches — every project is handled with the same commitment to quality.
-            </p>
+      {/* ─── SERVICES MARQUEE ─────────────────────── */}
+      <section className="py-5 bg-[#D4A843] overflow-hidden">
+        <div className="marquee-track">
+          {[...services, ...services].map((s, i) => (
+            <span key={i} className="flex items-center gap-4 px-8 whitespace-nowrap font-mono text-xs uppercase tracking-[0.3em] text-[#0D0B09] font-semibold">
+              <span className="text-[#0D0B09]/40">{s.icon}</span>
+              {s.label}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── ABOUT INTRO ──────────────────────────── */}
+      <section className="section-padding border-b border-[#2E2820]">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <ScrollReveal>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-px w-8 bg-[#D4A843]" />
+                <span className="section-label">Who We Are</span>
+              </div>
+              <h2 className="font-display font-bold text-[#EDE8DE] mb-6" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: '1.1' }}>
+                Built on Trust,<br />Driven by Craft
+              </h2>
+              <p className="text-[#7A7167] leading-relaxed mb-6">
+                Founded by Vinod Silare in 2016, Crafted Constructions was built on a simple belief: that every client deserves to know exactly what they're paying for. No hidden costs. No compromises. Just exceptional quality.
+              </p>
+              <p className="text-[#7A7167] leading-relaxed mb-10">
+                Today, we serve Raipur, Nagpur, and Bhandara with a team of 35+ specialists committed to transparent, on-time delivery of your dream home.
+              </p>
+              <Link
+                to="/our-story"
+                className="inline-flex items-center gap-3 text-[#D4A843] font-mono text-xs uppercase tracking-widest hover:gap-5 transition-all duration-300 group"
+              >
+                Read Our Story
+                <span className="w-8 h-px bg-[#D4A843] group-hover:w-12 transition-all duration-300" />
+              </Link>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <div className="relative">
+                {/* Main image */}
+                <div className="relative overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80&fit=crop"
+                    alt="Construction work"
+                    className="w-full h-80 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D0B09]/60 to-transparent" />
+                </div>
+                {/* Floating stat card */}
+                <div className="absolute -bottom-6 -left-6 bg-[#D4A843] p-6 w-40">
+                  <div className="font-display font-bold text-3xl text-[#0D0B09] leading-none mb-1">50+</div>
+                  <div className="font-mono text-[10px] text-[#0D0B09]/70 uppercase tracking-wider">Projects Delivered</div>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SERVICES ─────────────────────────────── */}
+      <section className="section-padding border-b border-[#2E2820]">
+        <div className="container mx-auto px-6">
+          <ScrollReveal className="mb-16">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-px w-8 bg-[#D4A843]" />
+              <span className="section-label">What We Build</span>
+            </div>
+            <h2 className="font-display font-bold text-[#EDE8DE]" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: '1.1' }}>
+              Full Spectrum Construction
+            </h2>
           </ScrollReveal>
 
-          <BentoGrid className="auto-rows-[200px]">
-            {/* New Construction - large */}
-            <BentoTile size="lg" className="p-8 flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[#5B8DEF]/10 border border-[#5B8DEF]/20 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-[#5B8DEF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-display font-bold text-[#FAFAFA] mb-2">New Construction</h3>
-                <p className="text-[#888888]">Full-scale residential and commercial builds from ground up. Starting ₹1,600/sq ft.</p>
-              </div>
-              <Link to="/services" className="text-[#5B8DEF] text-sm font-medium hover:text-[#7AAAF5] transition-colors flex items-center gap-1">
-                Explore packages <span>→</span>
-              </Link>
-            </BentoTile>
-
-            {/* Renovation */}
-            <BentoTile size="md" className="p-8 flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[#5B8DEF]/10 border border-[#5B8DEF]/20 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-[#5B8DEF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-display font-bold text-[#FAFAFA] mb-2">Renovation</h3>
-                <p className="text-[#888888] text-sm">Transform your existing space. Starting ₹600/sq ft.</p>
-              </div>
-            </BentoTile>
-
-            {/* Service Areas */}
-            <BentoTile size="md" className="p-8 flex flex-col justify-between bg-[#5B8DEF]/5 border-[#5B8DEF]/20">
-              <div>
-                <p className="text-[#5B8DEF] text-xs font-medium uppercase tracking-widest mb-3">Service Areas</p>
-                <div className="space-y-2">
-                  {['Raipur', 'Nagpur', 'Bhandara'].map((city) => (
-                    <div key={city} className="flex items-center gap-2 text-[#FAFAFA]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#5B8DEF]" />
-                      {city}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+            {[
+              {
+                number: '01',
+                title: 'New Construction',
+                desc: 'Full-scale residential and commercial builds from ground up. Structural design, foundation, and finishing — all under one roof.',
+                price: '₹1,600',
+                unit: 'per sq ft onwards',
+                img: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80&fit=crop',
+              },
+              {
+                number: '02',
+                title: 'Home Renovation',
+                desc: 'Transform your existing space with a complete renovation — from structural changes to premium finishes.',
+                price: '₹600',
+                unit: 'per sq ft onwards',
+                img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80&fit=crop',
+              },
+              {
+                number: '03',
+                title: 'Commercial Builds',
+                desc: 'Modern office complexes, retail spaces, and institutional builds — engineered for function and built to impress.',
+                price: 'Custom',
+                unit: 'quote on request',
+                img: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80&fit=crop',
+              },
+            ].map((service, i) => (
+              <ScrollReveal key={service.number} delay={i * 0.1}>
+                <div className="group relative overflow-hidden border-b md:border-b-0 md:border-r border-[#2E2820] last:border-0 hover:bg-[#161310] transition-all duration-300">
+                  <div className="p-8 lg:p-10">
+                    <div className="flex items-start justify-between mb-8">
+                      <span className="font-mono text-[#2E2820] text-6xl font-bold leading-none group-hover:text-[#D4A843]/20 transition-colors">{service.number}</span>
+                      <div className="text-right">
+                        <div className="font-display font-bold text-[#EDE8DE] text-xl">{service.price}</div>
+                        <div className="font-mono text-[10px] text-[#5A5249] uppercase tracking-wider">{service.unit}</div>
+                      </div>
                     </div>
-                  ))}
+                    <h3 className="font-display font-bold text-[#EDE8DE] text-xl mb-3">{service.title}</h3>
+                    <p className="text-[#7A7167] text-sm leading-relaxed mb-6">{service.desc}</p>
+                    <Link
+                      to="/services"
+                      className="inline-flex items-center gap-2 text-[#D4A843] font-mono text-xs uppercase tracking-widest group-hover:gap-4 transition-all duration-300"
+                    >
+                      Explore <span className="w-6 h-px bg-[#D4A843]" />
+                    </Link>
+                  </div>
+                  <div className="overflow-hidden h-48">
+                    <img
+                      src={service.img}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D0B09]/40 to-transparent" />
+                  </div>
                 </div>
-              </div>
-              <p className="text-[#888888] text-xs mt-4">Central India's trusted builder</p>
-            </BentoTile>
-
-            {/* Starting Price */}
-            <BentoTile size="md" className="p-8 flex flex-col justify-center items-center text-center">
-              <p className="text-[#888888] text-xs uppercase tracking-widest mb-2">Starting at</p>
-              <p className="text-4xl font-display font-bold text-[#FAFAFA]">₹1,600</p>
-              <p className="text-[#888888] text-sm">per sq ft</p>
-            </BentoTile>
-
-            {/* Years Experience */}
-            <BentoTile size="md" className="p-8 flex flex-col justify-center items-center text-center">
-              <p className="text-5xl font-display font-bold text-[#5B8DEF]">9+</p>
-              <p className="text-[#888888] text-sm mt-2">Years of Experience</p>
-              <p className="text-[#555555] text-xs mt-1">Since 2016</p>
-            </BentoTile>
-
-            {/* Get Quote CTA */}
-            <BentoTile
-              size="md"
-              className="p-8 flex flex-col justify-center items-center text-center bg-[#5B8DEF] border-[#5B8DEF] cursor-pointer"
-              onClick={handleQuoteClick}
-            >
-              <p className="text-white text-xl font-display font-bold mb-2">Get a Free Quote</p>
-              <p className="text-white/70 text-sm">24-hour response</p>
-              <div className="mt-4 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </div>
-            </BentoTile>
-          </BentoGrid>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Stats Row */}
-      <section className="py-16 border-y border-[#222222]">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <StatCounter target={9} suffix="+" label="Years Experience" />
-            <StatCounter target={3} label="Cities Served" />
-            <StatCounter target={50} suffix="+" label="Projects Completed" />
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-display font-bold text-[#FAFAFA] mb-2">₹1,600</div>
-              <div className="text-[#888888] text-sm uppercase tracking-widest">Starting / sq ft</div>
+      {/* ─── STATS ────────────────────────────────── */}
+      <section className="py-20 bg-[#161310] border-b border-[#2E2820]">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-0 md:divide-x md:divide-[#2E2820]">
+            <div className="md:px-12">
+              <StatCounter target={9} suffix="+" label="Years Experience" />
+            </div>
+            <div className="md:px-12">
+              <StatCounter target={50} suffix="+" label="Projects Completed" />
+            </div>
+            <div className="md:px-12">
+              <StatCounter target={3} label="Cities Served" />
+            </div>
+            <div className="md:px-12 text-center">
+              <div className="font-display font-bold text-5xl md:text-6xl text-[#EDE8DE] mb-2 leading-none">
+                ₹<span className="text-[#D4A843]">1,600</span>
+              </div>
+              <div className="text-[#5A5249] text-xs font-mono uppercase tracking-[0.2em] mt-2">Starting / sq ft</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Projects Bento */}
-      <section className="section-padding">
-        <div className="container mx-auto px-4">
-          <ScrollReveal className="flex items-end justify-between mb-12">
+      {/* ─── PROJECTS ─────────────────────────────── */}
+      <section className="section-padding border-b border-[#2E2820]">
+        <div className="container mx-auto px-6">
+          <ScrollReveal className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#FAFAFA] mb-2">Featured Projects</h2>
-              <p className="text-[#888888]">A glimpse of our finest work across central India.</p>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-px w-8 bg-[#D4A843]" />
+                <span className="section-label">Our Work</span>
+              </div>
+              <h2 className="font-display font-bold text-[#EDE8DE]" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: '1.1' }}>
+                Projects That Define Us
+              </h2>
             </div>
-            <Link to="/projects" className="text-[#5B8DEF] hover:text-[#7AAAF5] font-medium transition-colors hidden md:block">
-              View all →
+            <Link
+              to="/projects"
+              className="hidden md:inline-flex items-center gap-3 text-[#D4A843] font-mono text-xs uppercase tracking-widest hover:gap-5 transition-all duration-300 group mt-4 md:mt-0"
+            >
+              View All Projects
+              <span className="w-8 h-px bg-[#D4A843] group-hover:w-12 transition-all duration-300" />
             </Link>
           </ScrollReveal>
 
-          <BentoGrid className="auto-rows-[280px]">
-            {/* Large project */}
-            <BentoTile size="xl" className="relative overflow-hidden">
-              <img
-                src={featuredProjects[0]?.thumbnail}
-                alt={featuredProjects[0]?.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <span className="text-[#5B8DEF] text-xs font-medium uppercase tracking-widest">{featuredProjects[0]?.package}</span>
-                <h3 className="text-xl font-display font-bold text-white mt-1">{featuredProjects[0]?.title}</h3>
-                <p className="text-white/60 text-sm">{featuredProjects[0]?.location} · {featuredProjects[0]?.area}</p>
-              </div>
-            </BentoTile>
-
-            {/* Two small projects */}
-            {featuredProjects.slice(1, 3).map((project) => (
-              <BentoTile key={project.id} size="md" className="relative overflow-hidden">
-                <img
-                  src={project.thumbnail}
-                  alt={project.title}
-                  className="absolute inset-0 w-full h-full object-cover"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-[#2E2820]">
+            {featuredProjects.map((project, i) => (
+              <ScrollReveal key={project.id} delay={i * 0.05} className="border-r border-b border-[#2E2820] last:border-r-0">
+                <ProjectCard
+                  id={project.id}
+                  title={project.title}
+                  location={project.location}
+                  area={project.area}
+                  slug={project.slug}
+                  thumbnail={project.thumbnail}
+                  package={project.package}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <span className="text-[#5B8DEF] text-xs font-medium uppercase tracking-widest">{project.package}</span>
-                  <h3 className="text-base font-display font-bold text-white mt-1">{project.title}</h3>
-                  <p className="text-white/60 text-xs">{project.location}</p>
-                </div>
-              </BentoTile>
+              </ScrollReveal>
             ))}
-          </BentoGrid>
+          </div>
 
           <div className="text-center mt-8 md:hidden">
-            <Link to="/projects" className="text-[#5B8DEF] hover:text-[#7AAAF5] font-medium transition-colors">
-              View all projects →
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-3 text-[#D4A843] font-mono text-xs uppercase tracking-widest"
+            >
+              View All Projects <span className="w-8 h-px bg-[#D4A843]" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="section-padding border-t border-[#222222]">
-        <div className="container mx-auto px-4">
-          <ScrollReveal className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#FAFAFA] mb-4">What Our Clients Say</h2>
-            <p className="text-[#888888] max-w-xl mx-auto">
-              Don't take our word for it — hear from the homeowners we've had the pleasure of serving.
-            </p>
+      {/* ─── TESTIMONIALS ─────────────────────────── */}
+      <section className="section-padding border-b border-[#2E2820] bg-[#0D0B09]">
+        <div className="container mx-auto px-6">
+          <ScrollReveal className="text-center mb-16">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-px w-8 bg-[#D4A843]" />
+              <span className="section-label">Client Reviews</span>
+              <div className="h-px w-8 bg-[#D4A843]" />
+            </div>
+            <h2 className="font-display font-bold text-[#EDE8DE]" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: '1.1' }}>
+              What Our Clients Say
+            </h2>
           </ScrollReveal>
-
           <TestimonialCarousel />
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-[#5B8DEF] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: 'repeat',
-          backgroundSize: '128px',
-        }} />
-        <div className="container mx-auto px-4 text-center relative z-10">
+      {/* ─── CTA ──────────────────────────────────── */}
+      <section className="relative py-28 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=80&fit=crop"
+            alt="Beautiful home"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[#0D0B09]/88" />
+        </div>
+        <div className="container mx-auto px-6 relative z-10 text-center">
           <ScrollReveal>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-6">
-              Start Your Project Today.
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="h-px w-8 bg-[#D4A843]" />
+              <span className="section-label">Start Your Project</span>
+              <div className="h-px w-8 bg-[#D4A843]" />
+            </div>
+            <h2 className="font-display font-bold text-[#EDE8DE] mb-6" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: '1.1' }}>
+              Ready to Build Your<br />Dream Home?
             </h2>
-            <p className="text-white/80 mb-10 max-w-xl mx-auto text-lg">
-              Get in touch with our experts and take the first step toward your perfect home.
+            <p className="text-[#7A7167] mb-10 max-w-xl mx-auto leading-relaxed">
+              Get in touch with our experts and take the first step toward your perfect home. Free consultation, transparent pricing.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button
-                className="bg-white text-[#5B8DEF] hover:bg-white/90 font-medium px-8 py-4 rounded-xl transition-all"
                 onClick={handleQuoteClick}
+                className="bg-[#D4A843] text-[#0D0B09] font-semibold px-8 py-4 uppercase tracking-widest text-xs hover:bg-[#E8C56A] hover:shadow-[0_0_30px_rgba(212,168,67,0.3)] transition-all duration-300"
               >
                 Get Free Quote
               </button>
               <Link
                 to="/services"
-                className="border border-white/30 text-white hover:bg-white/10 font-medium px-8 py-4 rounded-xl transition-all"
+                className="border border-[#EDE8DE]/30 text-[#EDE8DE] font-medium px-8 py-4 uppercase tracking-widest text-xs hover:border-[#D4A843] hover:text-[#D4A843] transition-all duration-300 text-center"
               >
                 View Packages
               </Link>

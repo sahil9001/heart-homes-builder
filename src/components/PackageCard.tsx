@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { CheckCircle } from 'lucide-react';
 
 interface PackageCardProps {
   tier: string;
@@ -18,47 +17,76 @@ const PackageCard: React.FC<PackageCardProps> = ({
   type
 }) => {
   return (
-    <div className={`relative overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(91,141,239,0.2)] flex flex-col ${
+    <div className={`relative flex flex-col h-full transition-all duration-300 group ${
       recommended
-        ? 'bg-[#111111] border-[#5B8DEF]'
-        : 'bg-[#111111] border-[#222222]'
+        ? 'bg-[#D4A843] text-[#0D0B09]'
+        : 'bg-[#161310] border border-[#2E2820] hover:border-[#D4A843]/40'
     }`}>
       {recommended && (
-        <div className="absolute top-5 right-0 bg-[#5B8DEF] text-white px-3 py-1 text-sm font-medium rounded-l-lg">
-          Most Popular
-        </div>
+        <div className="absolute -top-px left-0 right-0 h-px bg-[#E8C56A]" />
       )}
 
-      <div className="p-6 border-b border-[#222222]">
-        <h3 className="text-xl font-display font-medium text-[#FAFAFA] mb-1">{tier}</h3>
-        <p className="text-[#888888] text-sm">
-          {type === 'build' ? 'New Construction Package' : 'Renovation Package'}
-        </p>
-        <div className="mt-4">
-          <span className="text-4xl font-display font-bold text-[#FAFAFA]">₹{rate.toLocaleString()}</span>
-          <span className="text-[#888888] text-sm"> / sq ft</span>
+      {/* Header */}
+      <div className={`p-8 border-b ${recommended ? 'border-[#B88D2E]/40' : 'border-[#2E2820]'}`}>
+        {recommended && (
+          <div className="flex items-center gap-2 mb-4">
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#0D0B09]/70 bg-[#0D0B09]/10 px-2 py-1">Most Popular</span>
+          </div>
+        )}
+        <div className="flex items-start justify-between">
+          <div>
+            <h3 className={`font-display font-bold text-2xl ${recommended ? 'text-[#0D0B09]' : 'text-[#EDE8DE]'}`}>
+              {tier}
+            </h3>
+            <p className={`font-mono text-xs uppercase tracking-wider mt-1 ${recommended ? 'text-[#0D0B09]/60' : 'text-[#5A5249]'}`}>
+              {type === 'build' ? 'New Construction' : 'Renovation Package'}
+            </p>
+          </div>
+          <div className="text-right">
+            <div className={`font-display font-bold text-4xl leading-none ${recommended ? 'text-[#0D0B09]' : 'text-[#EDE8DE]'}`}>
+              ₹{rate.toLocaleString()}
+            </div>
+            <div className={`font-mono text-xs mt-1 ${recommended ? 'text-[#0D0B09]/60' : 'text-[#5A5249]'}`}>
+              per sq ft
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="p-6 flex-1">
-        <ul className="space-y-3">
+      {/* Features */}
+      <div className="p-8 flex-1">
+        <ul className="space-y-4">
           {features.map((feature, index) => (
-            <li key={index} className="flex items-start">
-              <CheckCircle className="h-5 w-5 text-[#5B8DEF] mr-2 mt-0.5 flex-shrink-0" />
-              <span className="text-[#FAFAFA]/80">{feature}</span>
+            <li key={index} className="flex items-start gap-3">
+              <div className={`w-5 h-5 flex-shrink-0 mt-0.5 flex items-center justify-center ${
+                recommended ? 'bg-[#0D0B09]/15' : 'bg-[#D4A843]/10'
+              }`}>
+                <svg
+                  className={`w-3 h-3 ${recommended ? 'text-[#0D0B09]' : 'text-[#D4A843]'}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span className={`text-sm leading-relaxed ${recommended ? 'text-[#0D0B09]/85' : 'text-[#7A7167]'}`}>
+                {feature}
+              </span>
             </li>
           ))}
         </ul>
       </div>
 
-      <div className="p-6 pt-0">
+      {/* CTA */}
+      <div className="p-8 pt-0">
         <button
-          className={`w-full py-3 px-6 rounded-lg font-medium transition-all ${
-            recommended
-              ? 'bg-[#5B8DEF] hover:bg-[#7AAAF5] text-white'
-              : 'border border-[#5B8DEF] text-[#5B8DEF] hover:bg-[#5B8DEF]/10'
-          }`}
           onClick={() => window.location.href = '/contact'}
+          className={`w-full py-4 text-xs font-semibold uppercase tracking-widest transition-all duration-200 ${
+            recommended
+              ? 'bg-[#0D0B09] text-[#D4A843] hover:bg-[#1E1A16]'
+              : 'border border-[#D4A843] text-[#D4A843] hover:bg-[#D4A843] hover:text-[#0D0B09]'
+          }`}
         >
           Get Quote
         </button>

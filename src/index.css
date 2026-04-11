@@ -1,6 +1,5 @@
 
-@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,49 +7,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 221 82% 59%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 13%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 13%;
-    --muted-foreground: 0 0% 53%;
-    --accent: 221 82% 59%;
-    --accent-foreground: 0 0% 100%;
+    --background: 30 15% 6%;
+    --foreground: 40 20% 90%;
+    --card: 30 15% 8%;
+    --card-foreground: 40 20% 90%;
+    --popover: 30 15% 8%;
+    --popover-foreground: 40 20% 90%;
+    --primary: 38 65% 55%;
+    --primary-foreground: 30 15% 6%;
+    --secondary: 30 10% 12%;
+    --secondary-foreground: 40 20% 90%;
+    --muted: 30 10% 12%;
+    --muted-foreground: 30 8% 47%;
+    --accent: 38 65% 55%;
+    --accent-foreground: 30 15% 6%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 13%;
-    --input: 0 0% 13%;
-    --ring: 221 82% 59%;
-    --radius: 0.75rem;
-    --surface: #111111;
-  }
-
-  .dark {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 221 82% 59%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 13%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 13%;
-    --muted-foreground: 0 0% 53%;
-    --accent: 221 82% 59%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 13%;
-    --input: 0 0% 13%;
-    --ring: 221 82% 59%;
+    --destructive-foreground: 40 20% 90%;
+    --border: 30 10% 18%;
+    --input: 30 10% 12%;
+    --ring: 38 65% 55%;
+    --radius: 0.5rem;
   }
 }
 
@@ -58,48 +34,103 @@
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: #0A0A0A;
-    color: #FAFAFA;
-    @apply font-sans;
+    background-color: #0D0B09;
+    color: #EDE8DE;
+    @apply font-sans antialiased;
   }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-medium;
+    @apply font-display;
   }
-  h1 {
-    @apply text-4xl sm:text-5xl md:text-6xl;
-  }
-  h2 {
-    @apply text-3xl sm:text-4xl;
-  }
-  h3 {
-    @apply text-2xl sm:text-3xl;
-  }
-  h4 {
-    @apply text-xl sm:text-2xl;
-  }
-  h5 {
-    @apply text-lg sm:text-xl;
-  }
-  h6 {
-    @apply text-base sm:text-lg;
+
+  h1 { @apply text-4xl sm:text-5xl md:text-6xl font-bold leading-tight; }
+  h2 { @apply text-3xl sm:text-4xl font-bold leading-tight; }
+  h3 { @apply text-2xl sm:text-3xl font-semibold; }
+  h4 { @apply text-xl sm:text-2xl font-semibold; }
+  h5 { @apply text-lg sm:text-xl font-medium; }
+  h6 { @apply text-base sm:text-lg font-medium; }
+
+  ::selection {
+    background-color: rgba(212, 168, 67, 0.3);
+    color: #EDE8DE;
   }
 }
 
 @layer components {
-  .btn-primary {
-    @apply bg-[#5B8DEF] text-white font-medium px-6 py-3 rounded-lg hover:bg-[#7AAAF5] transition-all;
+  /* Gold accent button */
+  .btn-gold {
+    @apply bg-[#D4A843] text-[#0D0B09] font-semibold px-8 py-4 transition-all duration-300 hover:bg-[#E8C56A] hover:shadow-[0_0_20px_rgba(212,168,67,0.4)] uppercase tracking-wider text-sm;
   }
-  .btn-outline {
-    @apply border border-[#5B8DEF] text-[#5B8DEF] font-medium px-6 py-3 rounded-lg hover:bg-[#5B8DEF]/10 transition-all;
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply border border-[#EDE8DE]/30 text-[#EDE8DE] font-medium px-8 py-4 transition-all duration-300 hover:border-[#D4A843] hover:text-[#D4A843] uppercase tracking-wider text-sm;
   }
+
+  /* Section padding */
   .section-padding {
-    @apply py-12 md:py-16 lg:py-20;
+    @apply py-16 md:py-24 lg:py-32;
   }
-  .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(91,141,239,0.2)];
+
+  /* Gold rule separator */
+  .gold-rule {
+    @apply w-16 h-0.5 bg-[#D4A843];
   }
+
+  /* Section label */
+  .section-label {
+    @apply text-[#D4A843] text-xs font-mono uppercase tracking-[0.3em] font-medium;
+  }
+
+  /* Industrial card */
+  .card-industrial {
+    @apply bg-[#161310] border border-[#2E2820] transition-all duration-300;
+  }
+
+  /* Input field */
   .input-field {
-    @apply w-full px-4 py-3 rounded-md bg-[#111111] border border-[#222222] text-[#FAFAFA] placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#5B8DEF]/40 focus:border-[#5B8DEF];
+    @apply w-full px-4 py-3 bg-[#1E1A16] border border-[#2E2820] text-[#EDE8DE] placeholder-[#5A5249] focus:outline-none focus:border-[#D4A843] focus:ring-1 focus:ring-[#D4A843]/30 transition-colors;
   }
+
+  /* Hover card lift */
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_rgba(0,0,0,0.6)];
+  }
+}
+
+/* Marquee animation for service strip */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Grain texture overlay */
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: '200px';
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Smooth focus states */
+:focus-visible {
+  outline: 2px solid #D4A843;
+  outline-offset: 2px;
 }
