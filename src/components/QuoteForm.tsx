@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
@@ -26,20 +25,16 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+const inputClass = "bg-[#1E1A16] border-[#2E2820] text-[#EDE8DE] placeholder:text-[#5A5249] focus:border-[#D4A843] focus:ring-[#D4A843]/20 rounded-none h-11";
+
 const QuoteForm = () => {
   const [step, setStep] = useState(1);
   const { toast } = useToast();
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      email: '',
-      phone: '',
-      city: '',
-      projectType: 'new-construction',
-      area: '',
-      budget: '',
-      message: '',
+      name: '', email: '', phone: '', city: '',
+      projectType: 'new-construction', area: '', budget: '', message: '',
     },
   });
 
@@ -61,219 +56,182 @@ const QuoteForm = () => {
     if (result) setStep(step + 1);
   };
 
-  const inputClass = "bg-[#111111] border-[#333333] text-[#FAFAFA] placeholder:text-[#555555] focus:border-[#5B8DEF] focus:ring-[#5B8DEF]/20";
+  const steps = ['Personal Details', 'Project Info', 'Additional Info'];
 
   return (
-    <div className="w-full max-w-lg mx-auto bg-[#111111] border border-[#222222] rounded-2xl overflow-hidden">
-      <div className="p-6 border-b border-[#222222]">
-        <h2 className="text-xl font-display font-medium text-[#FAFAFA]">Request a Free Quote</h2>
-        <p className="text-[#888888] text-sm mt-1">Fill out this form and our team will get back to you within 24 hours.</p>
+    <div className="w-full">
+      {/* Step indicator */}
+      <div className="flex items-center mb-8">
+        {steps.map((s, i) => (
+          <React.Fragment key={s}>
+            <div className="flex flex-col items-center gap-1">
+              <div className={`w-7 h-7 flex items-center justify-center border font-mono text-xs transition-all duration-300 ${
+                step > i + 1 ? 'bg-[#D4A843] border-[#D4A843] text-[#0D0B09]'
+                : step === i + 1 ? 'border-[#D4A843] text-[#D4A843]'
+                : 'border-[#2E2820] text-[#5A5249]'
+              }`}>
+                {step > i + 1 ? (
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                ) : i + 1}
+              </div>
+              <span className={`text-[10px] font-mono uppercase tracking-wider hidden sm:block ${
+                step === i + 1 ? 'text-[#D4A843]' : 'text-[#5A5249]'
+              }`}>{s}</span>
+            </div>
+            {i < steps.length - 1 && (
+              <div className={`flex-1 h-px mx-2 transition-all duration-300 ${step > i + 1 ? 'bg-[#D4A843]' : 'bg-[#2E2820]'}`} />
+            )}
+          </React.Fragment>
+        ))}
       </div>
 
-      <div className="p-6">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-            {step === 1 && (
-              <>
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-[#FAFAFA]">Full Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter your name" {...field} className={inputClass} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-[#FAFAFA]">Email</FormLabel>
-                      <FormControl>
-                        <Input placeholder="you@example.com" type="email" {...field} className={inputClass} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="phone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-[#FAFAFA]">Phone Number</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter your phone number" {...field} className={inputClass} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </>
-            )}
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+          {step === 1 && (
+            <>
+              <FormField control={form.control} name="name" render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#7A7167] text-xs font-mono uppercase tracking-wider">Full Name</FormLabel>
+                  <FormControl><Input placeholder="Enter your name" {...field} className={inputClass} /></FormControl>
+                  <FormMessage className="text-red-400 text-xs" />
+                </FormItem>
+              )} />
+              <FormField control={form.control} name="email" render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#7A7167] text-xs font-mono uppercase tracking-wider">Email</FormLabel>
+                  <FormControl><Input placeholder="you@example.com" type="email" {...field} className={inputClass} /></FormControl>
+                  <FormMessage className="text-red-400 text-xs" />
+                </FormItem>
+              )} />
+              <FormField control={form.control} name="phone" render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#7A7167] text-xs font-mono uppercase tracking-wider">Phone Number</FormLabel>
+                  <FormControl><Input placeholder="Enter your phone number" {...field} className={inputClass} /></FormControl>
+                  <FormMessage className="text-red-400 text-xs" />
+                </FormItem>
+              )} />
+            </>
+          )}
 
-            {step === 2 && (
-              <>
-                <FormField
-                  control={form.control}
-                  name="city"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-[#FAFAFA]">City</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger className={inputClass}>
-                            <SelectValue placeholder="Select a city" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent className="bg-[#111111] border-[#333333] text-[#FAFAFA]">
-                          <SelectItem value="raipur">Raipur</SelectItem>
-                          <SelectItem value="nagpur">Nagpur</SelectItem>
-                          <SelectItem value="bhandara">Bhandara</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="projectType"
-                  render={({ field }) => (
-                    <FormItem className="space-y-3">
-                      <FormLabel className="text-[#FAFAFA]">Project Type</FormLabel>
-                      <FormControl>
-                        <RadioGroup
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                          className="flex flex-col space-y-1"
-                        >
-                          <FormItem className="flex items-center space-x-3 space-y-0">
-                            <FormControl>
-                              <RadioGroupItem value="new-construction" className="border-[#5B8DEF] text-[#5B8DEF]" />
-                            </FormControl>
-                            <FormLabel className="font-normal text-[#FAFAFA]">New Construction</FormLabel>
-                          </FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0">
-                            <FormControl>
-                              <RadioGroupItem value="renovation" className="border-[#5B8DEF] text-[#5B8DEF]" />
-                            </FormControl>
-                            <FormLabel className="font-normal text-[#FAFAFA]">Renovation</FormLabel>
-                          </FormItem>
-                        </RadioGroup>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="area"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-[#FAFAFA]">Built-up Area (sq ft)</FormLabel>
-                      <FormControl>
-                        <Input placeholder="e.g., 1500" {...field} className={inputClass} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </>
-            )}
+          {step === 2 && (
+            <>
+              <FormField control={form.control} name="city" render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#7A7167] text-xs font-mono uppercase tracking-wider">City</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger className={`${inputClass} w-full`}>
+                        <SelectValue placeholder="Select a city" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent className="bg-[#1E1A16] border-[#2E2820] text-[#EDE8DE] rounded-none">
+                      {['Raipur', 'Nagpur', 'Bhandara', 'Other'].map((c) => (
+                        <SelectItem key={c} value={c.toLowerCase()}>{c}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage className="text-red-400 text-xs" />
+                </FormItem>
+              )} />
+              <FormField control={form.control} name="projectType" render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#7A7167] text-xs font-mono uppercase tracking-wider">Project Type</FormLabel>
+                  <FormControl>
+                    <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex gap-4">
+                      {[{ value: 'new-construction', label: 'New Construction' }, { value: 'renovation', label: 'Renovation' }].map((opt) => (
+                        <FormItem key={opt.value} className="flex items-center gap-2 space-y-0">
+                          <FormControl>
+                            <RadioGroupItem value={opt.value} className="border-[#D4A843] text-[#D4A843]" />
+                          </FormControl>
+                          <FormLabel className="font-normal text-[#7A7167] text-sm cursor-pointer">{opt.label}</FormLabel>
+                        </FormItem>
+                      ))}
+                    </RadioGroup>
+                  </FormControl>
+                  <FormMessage className="text-red-400 text-xs" />
+                </FormItem>
+              )} />
+              <FormField control={form.control} name="area" render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#7A7167] text-xs font-mono uppercase tracking-wider">Built-up Area (sq ft)</FormLabel>
+                  <FormControl><Input placeholder="e.g., 1500" {...field} className={inputClass} /></FormControl>
+                  <FormMessage className="text-red-400 text-xs" />
+                </FormItem>
+              )} />
+            </>
+          )}
 
-            {step === 3 && (
-              <>
-                <FormField
-                  control={form.control}
-                  name="budget"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-[#FAFAFA]">Budget Range (Optional)</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger className={inputClass}>
-                            <SelectValue placeholder="Select a budget range" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent className="bg-[#111111] border-[#333333] text-[#FAFAFA]">
-                          <SelectItem value="under-20-lakh">Under ₹20 lakh</SelectItem>
-                          <SelectItem value="20-40-lakh">₹20-40 lakh</SelectItem>
-                          <SelectItem value="40-60-lakh">₹40-60 lakh</SelectItem>
-                          <SelectItem value="60-80-lakh">₹60-80 lakh</SelectItem>
-                          <SelectItem value="80-lakh-1-crore">₹80 lakh - 1 crore</SelectItem>
-                          <SelectItem value="above-1-crore">Above ₹1 crore</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-[#FAFAFA]">Additional Details (Optional)</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Tell us more about your project requirements..."
-                          className={`resize-none ${inputClass}`}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </>
-            )}
-          </form>
-        </Form>
-      </div>
+          {step === 3 && (
+            <>
+              <FormField control={form.control} name="budget" render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#7A7167] text-xs font-mono uppercase tracking-wider">Budget Range (Optional)</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger className={`${inputClass} w-full`}>
+                        <SelectValue placeholder="Select a budget range" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent className="bg-[#1E1A16] border-[#2E2820] text-[#EDE8DE] rounded-none">
+                      {[
+                        { value: 'under-20-lakh', label: 'Under ₹20 lakh' },
+                        { value: '20-40-lakh', label: '₹20–40 lakh' },
+                        { value: '40-60-lakh', label: '₹40–60 lakh' },
+                        { value: '60-80-lakh', label: '₹60–80 lakh' },
+                        { value: '80-lakh-1-crore', label: '₹80 lakh – 1 crore' },
+                        { value: 'above-1-crore', label: 'Above ₹1 crore' },
+                      ].map((opt) => (
+                        <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage className="text-red-400 text-xs" />
+                </FormItem>
+              )} />
+              <FormField control={form.control} name="message" render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#7A7167] text-xs font-mono uppercase tracking-wider">Additional Details (Optional)</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Tell us more about your project..."
+                      className={`resize-none ${inputClass} h-28`}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-red-400 text-xs" />
+                </FormItem>
+              )} />
+            </>
+          )}
+        </form>
+      </Form>
 
-      {/* Step Indicator */}
-      <div className="px-6 pb-2">
-        <div className="flex items-center gap-1">
-          <div className={`h-1 flex-1 rounded-full ${step >= 1 ? 'bg-[#5B8DEF]' : 'bg-[#222222]'}`}></div>
-          <div className={`h-1 flex-1 rounded-full ${step >= 2 ? 'bg-[#5B8DEF]' : 'bg-[#222222]'}`}></div>
-          <div className={`h-1 flex-1 rounded-full ${step >= 3 ? 'bg-[#5B8DEF]' : 'bg-[#222222]'}`}></div>
-        </div>
-        <div className="flex justify-between mt-2">
-          <span className={`text-xs ${step >= 1 ? 'text-[#5B8DEF]' : 'text-[#555555]'}`}>Personal Details</span>
-          <span className={`text-xs ${step >= 2 ? 'text-[#5B8DEF]' : 'text-[#555555]'}`}>Project Info</span>
-          <span className={`text-xs ${step >= 3 ? 'text-[#5B8DEF]' : 'text-[#555555]'}`}>Additional Info</span>
-        </div>
-      </div>
-
-      <div className="p-6 pt-4 flex justify-between border-t border-[#222222] mt-4">
-        {step > 1 && (
+      {/* Nav buttons */}
+      <div className="flex justify-between mt-8 pt-6 border-t border-[#2E2820]">
+        {step > 1 ? (
           <button
-            className="border border-[#333333] text-[#FAFAFA] px-4 py-2 rounded-lg hover:bg-[#222222] transition-colors"
             onClick={() => setStep(step - 1)}
+            className="border border-[#2E2820] text-[#7A7167] px-6 py-3 text-xs font-mono uppercase tracking-wider hover:border-[#D4A843] hover:text-[#D4A843] transition-all"
           >
-            Previous
+            Back
           </button>
-        )}
+        ) : <div />}
+
         {step < 3 ? (
           <button
-            className="ml-auto bg-[#5B8DEF] hover:bg-[#7AAAF5] text-white px-6 py-2 rounded-lg font-medium transition-colors"
             onClick={nextStep}
+            className="bg-[#D4A843] text-[#0D0B09] px-8 py-3 text-xs font-bold uppercase tracking-wider hover:bg-[#E8C56A] transition-all"
           >
             Next
           </button>
         ) : (
           <button
-            className="ml-auto bg-[#5B8DEF] hover:bg-[#7AAAF5] text-white px-6 py-2 rounded-lg font-medium transition-colors"
             onClick={form.handleSubmit(onSubmit)}
+            className="bg-[#D4A843] text-[#0D0B09] px-8 py-3 text-xs font-bold uppercase tracking-wider hover:bg-[#E8C56A] transition-all"
           >
-            Submit
+            Submit Request
           </button>
         )}
       </div>

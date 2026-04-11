@@ -1,6 +1,6 @@
+
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -8,9 +8,7 @@ const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-    
-    // Set canonical URL for this page
+    console.error('404 Error: User attempted to access non-existent route:', location.pathname);
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) {
       canonical.setAttribute('href', `https://craftedconstructions.in${location.pathname}`);
@@ -23,34 +21,56 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-[#0D0B09] flex flex-col">
       <Navbar />
-      
-      <div className="flex-grow flex items-center justify-center">
-        <div className="container mx-auto px-4 text-center py-16">
-          <div className="mb-8">
-            <svg className="w-24 h-24 mx-auto text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-            </svg>
+
+      <div className="flex-grow flex items-center justify-center relative overflow-hidden">
+        {/* Background grid */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: 'linear-gradient(#D4A843 1px, transparent 1px), linear-gradient(to right, #D4A843 1px, transparent 1px)',
+          backgroundSize: '80px 80px',
+        }} />
+
+        {/* Large 404 background text */}
+        <div
+          className="absolute select-none pointer-events-none font-display font-bold text-[#2E2820]"
+          style={{ fontSize: 'clamp(8rem, 30vw, 25rem)', lineHeight: '1', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+        >
+          404
+        </div>
+
+        <div className="container mx-auto px-6 text-center relative z-10 py-32">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="h-px w-8 bg-[#D4A843]" />
+            <span className="section-label">Page Not Found</span>
+            <div className="h-px w-8 bg-[#D4A843]" />
           </div>
-          
-          <h1 className="text-6xl sm:text-8xl font-display font-bold mb-6">404</h1>
-          <h2 className="text-2xl sm:text-3xl font-display font-medium mb-4 text-gray-700">Page Not Found</h2>
-          <p className="text-gray-600 max-w-lg mx-auto mb-8">
+
+          <h1 className="font-display font-bold text-[#EDE8DE] mb-4" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', lineHeight: '1.1' }}>
+            This Page Doesn't Exist
+          </h1>
+
+          <p className="text-[#7A7167] max-w-lg mx-auto mb-10 leading-relaxed">
             The page you're looking for doesn't exist or has been moved. Please check the URL or navigate back to the homepage.
           </p>
-          
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
-              <Link to="/">Back to Home</Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-              <Link to="/contact">Contact Us</Link>
-            </Button>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              to="/"
+              className="bg-[#D4A843] text-[#0D0B09] font-semibold px-8 py-4 uppercase tracking-widest text-xs hover:bg-[#E8C56A] transition-all"
+            >
+              Back to Home
+            </Link>
+            <Link
+              to="/contact"
+              className="border border-[#2E2820] text-[#7A7167] font-medium px-8 py-4 uppercase tracking-widest text-xs hover:border-[#D4A843] hover:text-[#D4A843] transition-all"
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
       </div>
-      
+
       <Footer />
     </div>
   );

@@ -11,10 +11,10 @@ const CityBadge: React.FC<CityBadgeProps> = ({ city, active = false, onClick }) 
   return (
     <button
       onClick={onClick}
-      className={`inline-flex items-center px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+      className={`inline-flex items-center px-5 py-2.5 text-xs font-mono uppercase tracking-widest transition-all duration-200 ${
         active
-          ? 'bg-[#5B8DEF] text-white'
-          : 'bg-[#111111] text-[#888888] border border-[#222222] hover:border-[#5B8DEF] hover:text-[#5B8DEF]'
+          ? 'bg-[#D4A843] text-[#0D0B09] font-semibold'
+          : 'bg-transparent text-[#7A7167] border border-[#2E2820] hover:border-[#D4A843]/50 hover:text-[#D4A843]'
       }`}
     >
       {city}
